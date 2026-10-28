@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>밴쿠버 푸디맵</title>
+<meta name="description" content="밴쿠버 한인을 위한 오늘의 패스트푸드 딜, 딜 캘린더, 내 주변 매장 찾기와 한인 맛집 협찬 딜. 매일 아침 업데이트.">
+<meta property="og:title" content="밴쿠버 푸디맵 – Vancouver Foodie Map">
+<meta property="og:description" content="맥도날드·웬디스·A&W·서브웨이·DQ·버거킹 오늘의 딜을 한눈에. 매일 아침 업데이트.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F6F1E7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23324CA8'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23FACC15' font-family='sans-serif' font-weight='700'%3E딜%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;700&display=swap">
+<style>
+/* Layout: 모기지아재 형식 — 크림 종이 배경, 테두리만 있는 평평한 카드, 알약 버튼, 파란 띠. 한 열 리스트 + 월 그리드 캘린더. */
+:root{
+  --color-main:#324CA8; --color-main-soft:#C9D1EE; --color-point:#FACC15;
+  --color-bg:#F6F1E7; --color-surface:#FBF8F1; --color-text:#14161F; --color-text-muted:#5A5A52;
+  --color-line:#CFC7B2; --color-on-main:#F6F1E7; --color-on-point:#14161F; --color-alert:#C2412D;
+  --font-display:'Black Han Sans','Noto Sans KR',sans-serif;
+  --font-body:'Gowun Dodum','Noto Sans KR',system-ui,sans-serif;
+  --font-num:'Noto Sans KR',system-ui,sans-serif;
+  --text-stroke-ui:.6px; --btn-radius:60px; --card-radius:8px; --wrap-max:1120px; --gutter:20px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --color-main:#8FA3EE; --color-main-soft:#2B3566; --color-bg:#12141B; --color-surface:#1B1E28; --color-text:#EFE9DC;
+  --color-text-muted:#A9A496; --color-line:#3B3E4B; --color-on-main:#12141B; --color-alert:#FF8A72; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --color-main:#8FA3EE; --color-main-soft:#2B3566; --color-bg:#12141B; --color-surface:#1B1E28; --color-text:#EFE9DC;
+  --color-text-muted:#A9A496; --color-line:#3B3E4B; --color-on-main:#12141B; --color-alert:#FF8A72; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);font-size:17px;line-height:1.7}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--color-bg)}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+button,select,input,textarea{font-family:var(--font-body)}
+:focus-visible{outline:3px solid var(--color-point);outline-offset:2px}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--color-bg);border-bottom:2px solid var(--color-line)}
+header .wrap{padding-block:14px 0;display:flex;flex-direction:column;gap:8px}
+.brandrow{display:flex;align-items:center;justify-content:space-between;gap:10px 16px;flex-wrap:wrap}
+.logo-name{margin:0;font-family:var(--font-display);font-weight:400;font-size:28px;line-height:1.1}
+.logo-name span{background:linear-gradient(transparent 62%,var(--color-point) 62%);padding-inline:2px}
+.logo-sub{display:block;font-family:var(--font-body);font-size:13px;color:var(--color-text-muted);margin-top:2px}
+.area{display:flex;align-items:center;gap:8px;font-size:14px;-webkit-text-stroke:var(--text-stroke-ui)}
+select{font-size:15px;padding:7px 12px;border-radius:var(--btn-radius);border:2px solid var(--color-line);background:var(--color-surface);color:var(--color-text)}
+nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav button{font-size:16px;background:none;border:0;color:var(--color-text-muted);padding:8px 12px 10px;cursor:pointer;white-space:nowrap;-webkit-text-stroke:var(--text-stroke-ui);border-bottom:4px solid transparent}
+nav button[aria-selected="true"]{color:var(--color-text);border-bottom-color:var(--color-point)}
+
+/* pills */
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:var(--btn-radius);padding:11px 20px;font-size:16px;cursor:pointer;border:2px solid var(--color-main);background:var(--color-main);color:var(--color-on-main);-webkit-text-stroke:var(--text-stroke-ui);text-decoration:none;transition:transform .15s}
+.pill:hover{transform:translateY(-2px)}
+.pill.ghost{background:transparent;color:var(--color-text);border-color:var(--color-text)}
+.pill.yellow{background:var(--color-point);border-color:var(--color-point);color:var(--color-on-point)}
+.pill.sm{padding:5px 13px;font-size:14px}
+
+main .wrap{padding-block:22px 40px;display:flex;flex-direction:column;gap:18px}
+.lede{display:flex;justify-content:space-between;align-items:baseline;gap:4px 12px;flex-wrap:wrap}
+h2{font-family:var(--font-display);font-weight:400;font-size:24px;margin:0;line-height:1.3;text-wrap:balance}
+h2 .hl{background:linear-gradient(transparent 60%,var(--color-point) 60%)}
+.muted{color:var(--color-text-muted);font-size:14px}
+.updated{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px;color:var(--color-text-muted)}
+.updated b{color:var(--color-text);font-weight:400;-webkit-text-stroke:var(--text-stroke-ui)}
+
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-size:14px;padding:4px 13px;border-radius:var(--btn-radius);border:2px solid var(--color-line);background:var(--color-surface);color:var(--color-text);cursor:pointer;-webkit-text-stroke:var(--text-stroke-ui)}
+.chip[aria-pressed="true"]{background:var(--color-text);color:var(--color-bg);border-color:var(--color-text)}
+
+/* coupon card */
+.list{display:flex;flex-direction:column;gap:12px}
+.coupon{display:grid;grid-template-columns:104px 1fr;background:var(--color-surface);border:2px solid var(--color-line);border-radius:var(--card-radius);transition:transform .15s,border-color .15s}
+.coupon:hover{border-color:var(--color-main);transform:translateY(-2px)}
+.stub{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:14px 6px;border-right:2px dashed var(--color-line);text-align:center}
+.stub b{font-family:var(--font-display);font-weight:400;font-size:24px;line-height:1.15;color:var(--color-main)}
+.stub s{font-family:var(--font-num);font-size:13px;color:var(--color-text-muted)}
+.stub em{font-style:normal;font-size:12.5px;color:var(--color-text-muted);margin-top:4px}
+.cbody{padding:14px 18px;min-width:0;display:flex;flex-direction:column;gap:4px}
+.ctop{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.brand{font-family:var(--font-num);font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:4px;color:#fff}
+.cbody h3{margin:0;font-size:18px;line-height:1.45;-webkit-text-stroke:.3px;text-wrap:balance}
+.meta{font-size:14px;color:var(--color-text-muted);display:flex;gap:4px 12px;flex-wrap:wrap;align-items:center}
+.meta a{color:var(--color-main)}
+.tag{font-size:12px;padding:1px 9px;border-radius:var(--btn-radius);line-height:1.6}
+.tag.ending{background:var(--color-alert);color:#fff}
+.tag.new{background:var(--color-point);color:var(--color-on-point)}
+.tag.sample{border:1.5px dashed var(--color-text-muted);color:var(--color-text-muted)}
+.tag.partner{background:var(--color-main);color:var(--color-on-main)}
+.tag.ai{background:var(--color-main-soft);color:var(--color-text)}
+.code{font-family:var(--font-num);font-size:13px;background:var(--color-main-soft);padding:0 7px;border-radius:4px;color:var(--color-text)}
+.linkbtn{background:none;border:0;padding:0;color:var(--color-text-muted);font-size:13.5px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.linkbtn:hover{color:var(--color-main)}
+.empty{background:var(--color-surface);border:2px dashed var(--color-line);border-radius:var(--card-radius);padding:24px 20px;color:var(--color-text-muted);text-align:center}
+
+/* report band (상담 띠) */
+.band{background:var(--color-main);color:var(--color-on-main);border-radius:var(--card-radius);padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.band p{margin:0;font-size:16px}
+.band strong{font-family:var(--font-display);font-weight:400;font-size:20px;display:block}
+
+/* calendar */
+.calhead{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.dow{font-size:13px;color:var(--color-text-muted);text-align:center}
+.day{text-align:left;min-height:74px;background:var(--color-surface);border:2px solid var(--color-line);border-radius:6px;padding:4px 6px;display:flex;flex-direction:column;gap:3px;cursor:pointer;color:var(--color-text);min-width:0}
+.day.out{opacity:.4}
+.day.today{border-color:var(--color-main)}
+.day[aria-pressed="true"]{background:var(--color-main-soft)}
+.day .n{font-family:var(--font-num);font-size:13px;font-variant-numeric:tabular-nums}
+.dots{display:flex;flex-wrap:wrap;gap:2px}
+.dots i{width:8px;height:8px;border-radius:50%;display:block}
+.day .cnt{font-size:11.5px;color:var(--color-text-muted);margin-top:auto}
+
+/* nearby */
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.chain{display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--color-surface);border:2px solid var(--color-line);border-radius:var(--card-radius);padding:11px 13px;color:var(--color-text);text-decoration:none;font-size:15px;transition:transform .15s,border-color .15s}
+.chain:hover{border-color:var(--color-main);transform:translateY(-2px)}
+.dist{font-family:var(--font-num);font-size:13px;color:var(--color-main);font-variant-numeric:tabular-nums}
+
+/* admin + forms */
+details.panel{background:var(--color-surface);border:2px solid var(--color-line);border-radius:var(--card-radius);padding:14px 20px}
+details.panel summary{cursor:pointer;-webkit-text-stroke:var(--text-stroke-ui)}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.form label{display:flex;flex-direction:column;gap:3px;font-size:13.5px;color:var(--color-text-muted)}
+.form .full{grid-column:1/-1}
+.form input,.form select,.form textarea{font-size:15px;padding:9px 12px;border:2px solid var(--color-line);border-radius:6px;background:var(--color-bg);color:var(--color-text);min-width:0}
+.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--color-main);outline:none}
+.form textarea{min-height:90px;resize:vertical;line-height:1.6}
+.form .actions{grid-column:1/-1;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.status{font-size:14px;color:var(--color-text-muted);margin:0}
+.req{display:flex;flex-direction:column;gap:4px;padding:12px 0;border-top:2px solid var(--color-line)}
+.req:first-child{border-top:0}
+.req .ctop{justify-content:space-between}
+.req p{margin:0;font-size:15px;white-space:pre-wrap;overflow-wrap:anywhere}
+.req .reply{font-size:14px;color:var(--color-main)}
+
+dialog{border:2px solid var(--color-line);border-radius:var(--card-radius);background:var(--color-surface);color:var(--color-text);padding:22px;width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px)}
+dialog::backdrop{background:rgba(20,22,31,.45)}
+dialog h2{font-size:22px}
+
+footer{border-top:2px solid var(--color-line)}
+footer .wrap{padding-block:18px 28px;font-size:13.5px;color:var(--color-text-muted);display:flex;flex-direction:column;gap:4px}
+footer strong{color:var(--color-text);font-weight:400;-webkit-text-stroke:var(--text-stroke-ui)}
+
+@media (max-width:520px){
+  body{font-size:16px}
+  .coupon{grid-template-columns:82px 1fr}.stub b{font-size:20px}.cbody{padding:12px 14px}
+  .day{min-height:56px;padding:3px 4px}.form{grid-template-columns:1fr}
+  .logo-name{font-size:24px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.pill:hover,.coupon:hover,.chain:hover{transform:none}}
+</style>
+<style>
+html{color-scheme:light}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+.locrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.gps{font-size:14px;padding:6px 14px}
+.privacy{font-size:12.5px;color:var(--color-text-muted)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brandrow">
+      <h1 class="logo-name"><span>밴쿠버 푸디맵</span><small class="logo-sub">Vancouver Foodie Map · 오늘의 패스트푸드 딜 &amp; 한인 맛집</small></h1>
+      <div class="locrow">
+        <button class="pill ghost gps" id="gpsBtn" type="button">📍 내 위치</button>
+        <label class="area" for="area">동네 <select id="area"></select></label>
+      </div>
+    </div>
+    <nav role="tablist" aria-label="보기">
+      <button role="tab" data-view="today" aria-selected="true">오늘의 딜</button>
+      <button role="tab" data-view="calendar" aria-selected="false">캘린더</button>
+      <button role="tab" data-view="nearby" aria-selected="false">내 주변</button>
+      <button role="tab" data-view="korean" aria-selected="false">한인 맛집</button>
+    </nav>
+  </div>
+</header>
+
+<main><div class="wrap">
+  <div class="updated" id="updated">딜 정보를 불러오는 중…</div>
+
+  <section id="v-today">
+    <div class="lede"><h2><span class="hl">오늘</span> 쓸 수 있는 딜</h2><span class="muted" id="todayLabel"></span></div>
+    <div class="chips" id="brandChips" style="margin-block:12px"></div>
+    <div class="list" id="todayList"></div>
+  </section>
+
+  <section id="v-calendar" hidden>
+    <div class="calhead">
+      <button class="pill ghost sm" id="prevM" aria-label="이전 달">‹ 이전</button>
+      <h2 id="monthLabel"></h2>
+      <button class="pill ghost sm" id="nextM" aria-label="다음 달">다음 ›</button>
+    </div>
+    <div class="cal" id="cal" style="margin-top:12px"></div>
+    <h2 id="dayTitle" style="font-size:19px;margin-top:18px"></h2>
+    <div class="list" id="dayList" style="margin-top:10px"></div>
+  </section>
+
+  <section id="v-nearby" hidden>
+    <div class="lede"><h2>내 <span class="hl">주변</span> 체인점</h2><span class="muted" id="nearLabel"></span></div>
+    <p class="muted" style="margin:6px 0 12px">구글 지도에서 가까운 매장을 엽니다. 오늘 딜이 있는 브랜드가 먼저 나와요.</p>
+    <div class="grid2" id="chainGrid"></div>
+    <h2 style="font-size:19px;margin-top:22px">가까운 한인 업소</h2>
+    <div class="list" id="nearKorean" style="margin-top:10px"></div>
+  </section>
+
+  <section id="v-korean" hidden>
+    <div class="lede"><h2>한인 맛집 <span class="hl">협찬 딜</span></h2><span class="muted">파트너 업소가 직접 올린 혜택</span></div>
+    <div class="list" id="sponsorList" style="margin-top:12px"></div>
+  </section>
+
+  <div class="band">
+    <p><strong>못 본 딜이 있나요?</strong>제보해 주시면 AI가 확인해서 다음 날 아침 업데이트 때 올려요.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <a class="pill yellow" data-form="deal" href="#" target="_blank" rel="noopener">딜 제보 · 오류 신고</a>
+      <a class="pill ghost" data-form="sponsor" href="#" target="_blank" rel="noopener" style="color:var(--color-on-main);border-color:var(--color-on-main)">협찬 문의</a>
+    </div>
+  </div>
+</div></main>
+
+<footer><div class="wrap">
+  <span><strong>밴쿠버 푸디맵</strong> – 모기지아재 제공</span>
+  <span>딜 정보는 RFD, Reddit, 브랜드 공식 사이트와 뉴스를 AI가 매일 아침 확인해 정리합니다. 매장마다 참여 여부가 다를 수 있으니 주문 전에 앱이나 매장에서 확인하세요.</span>
+  <span class="privacy">위치 정보는 가까운 매장 거리를 계산하는 데 이 기기 안에서만 쓰이고, 어디에도 전송하거나 저장하지 않습니다.</span>
+</div></footer>
+<script>
+/* 설정: 구글 폼을 만든 뒤 주소를 넣으세요. 비어 있으면 버튼이 '준비 중'으로 표시됩니다. */
+const CONFIG = {
+  dealFormUrl: "",     // 딜 제보 · 오류 신고 폼
+  sponsorFormUrl: ""   // 협찬 문의 폼
+};
+
+const BRANDS = {
+  mcd:{name:"맥도날드",en:"McDonald's",color:"#c8102e"},
+  wendys:{name:"웬디스",en:"Wendy's",color:"#d62300"},
+  aw:{name:"A&W",en:"A&W",color:"#8a5a2b"},
+  subway:{name:"서브웨이",en:"Subway",color:"#008c15"},
+  dq:{name:"DQ",en:"Dairy Queen",color:"#0a4fa3"},
+  bk:{name:"버거킹",en:"Burger King",color:"#b5530a"},
+  tims:{name:"팀홀튼",en:"Tim Hortons",color:"#a3171d"},
+  popeyes:{name:"파파이스",en:"Popeyes",color:"#e35205"},
+  kfc:{name:"KFC",en:"KFC",color:"#a3080c"},
+  pizzahut:{name:"피자헛",en:"Pizza Hut",color:"#c8102e"},
+  korean:{name:"한인 업소",en:"Korean",color:"#324CA8"},
+  other:{name:"기타",en:"",color:"#5A5A52"}
+};
+const AREAS = [
+  ["coquitlam","코퀴틀람",49.2785,-122.7963],["portmoody","포트무디",49.2838,-122.8317],
+  ["burnaby","버나비 메트로타운",49.2276,-123.0076],["lougheed","버나비 로히드",49.2486,-122.8970],
+  ["downtown","밴쿠버 다운타운",49.2827,-123.1207],["kingsway","밴쿠버 킹스웨이/조이스",49.2384,-123.0316],
+  ["richmond","리치몬드",49.1666,-123.1336],["newwest","뉴웨스트민스터",49.2057,-122.9110],
+  ["surrey","써리 길포드",49.1913,-122.8490],["langley","랭리",49.1044,-122.6600],
+  ["northvan","노스밴쿠버",49.3200,-123.0724]
+];
+const VIEWS = ["today","calendar","nearby","korean"];
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const ymd = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+const todayStr = ymd(new Date());
+const fmtDate = s => { const [,m,d] = String(s).split("-").map(Number); return `${m}/${d}`; };
+const daysBetween = (a,b) => Math.round((new Date(b+"T00:00") - new Date(a+"T00:00"))/864e5);
+const safeUrl = u => /^https:\/\//i.test(u||"") ? u : "";
+const brandOf = k => BRANDS[k] || BRANDS.other;
+
+const state = { deals:[], sponsors:[], meta:null, brand:"all", view:"today", month:new Date(), selDay:todayStr, area:"coquitlam", pos:null };
+try { state.area = localStorage.getItem("fm-area") || state.area; state.view = localStorage.getItem("fm-view") || state.view; } catch(e){}
+if (VIEWS.includes(location.hash.slice(1))) state.view = location.hash.slice(1);
+if (!VIEWS.includes(state.view)) state.view = "today";
+
+$("area").innerHTML = AREAS.map(a => `<option value="${a[0]}">${a[1]}</option>`).join("") + `<option value="gps" hidden>📍 내 위치</option>`;
+$("area").value = state.area;
+$("area").addEventListener("change", e => {
+  if (e.target.value === "gps") return;
+  state.area = e.target.value; state.pos = null;
+  try{localStorage.setItem("fm-area",state.area)}catch(_){}
+  render();
+});
+
+/* GPS: 버튼을 눌렀을 때만 위치를 요청하고, 좌표는 이 기기 안에서 거리 계산에만 쓴다 */
+$("gpsBtn").addEventListener("click", () => {
+  if (!navigator.geolocation){ $("gpsBtn").textContent = "위치 사용 불가"; return; }
+  $("gpsBtn").textContent = "찾는 중…";
+  navigator.geolocation.getCurrentPosition(p => {
+    state.pos = {lat:p.coords.latitude, lng:p.coords.longitude};
+    $("area").value = "gps"; $("gpsBtn").textContent = "📍 내 위치 사용 중";
+    render();
+  }, () => {
+    $("gpsBtn").textContent = "📍 내 위치";
+    $("updated").textContent = "위치를 가져오지 못했어요. 브라우저에서 위치 권한을 허용하거나 동네를 직접 골라 주세요.";
+  }, {enableHighAccuracy:false, timeout:10000, maximumAge:300000});
+});
+
+document.querySelectorAll("nav button").forEach(b => b.addEventListener("click", () => setView(b.dataset.view)));
+function setView(v){
+  state.view = v;
+  document.querySelectorAll("nav button").forEach(b => b.setAttribute("aria-selected", b.dataset.view===v));
+  VIEWS.forEach(k => $("v-"+k).hidden = k!==v);
+  try{localStorage.setItem("fm-view",v)}catch(_){}
+  if (location.hash.slice(1)!==v) history.replaceState(null,"","#"+v);
+  render();
+}
+window.addEventListener("hashchange", () => { const v = location.hash.slice(1); if (VIEWS.includes(v) && v!==state.view) setView(v); });
+
+function here(){
+  if (state.pos) return {name:"내 위치", lat:state.pos.lat, lng:state.pos.lng};
+  const a = AREAS.find(a => a[0]===state.area) || AREAS[0];
+  return {name:a[1], lat:a[2], lng:a[3]};
+}
+function km(lat1,lng1,lat2,lng2){const R=6371,r=Math.PI/180,dLa=(lat2-lat1)*r,dLo=(lng2-lng1)*r;const h=Math.sin(dLa/2)**2+Math.cos(lat1*r)*Math.cos(lat2*r)*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
+const activeOn = (d, day) => d.start <= day && day <= d.end;
+
+function dealCard(d){
+  const b = brandOf(d.brand), left = daysBetween(todayStr, d.end), tags = [];
+  if (d.start===todayStr) tags.push(`<span class="tag new">오늘 시작</span>`);
+  if (left>=0 && left<=1) tags.push(`<span class="tag ending">${left===0?"오늘 마감":"내일 마감"}</span>`);
+  if (d.region) tags.push(`<span class="tag ai">${esc(d.region)}</span>`);
+  if (d.needsCheck) tags.push(`<span class="tag sample">종료일 확인 필요</span>`);
+  const price = d.price!=="" && d.price!=null ? (+d.price===0 ? "무료" : `$${esc(d.price)}`) : "딜";
+  const url = safeUrl(d.url);
+  return `<article class="coupon">
+    <div class="stub"><b>${price}</b>${d.orig?`<s>$${esc(d.orig)}</s>`:""}<em>~${fmtDate(d.end)}</em></div>
+    <div class="cbody">
+      <div class="ctop"><span class="brand" style="background:${b.color}">${esc(b.en||b.name)}</span>${tags.join("")}</div>
+      <h3>${esc(d.title)}</h3>
+      <div class="meta">${d.how?`<span>${esc(d.how)}</span>`:""}${d.code?`<span>코드 <span class="code">${esc(d.code)}</span></span>`:""}<span>${fmtDate(d.start)} – ${fmtDate(d.end)}</span>${url?`<a href="${esc(url)}" target="_blank" rel="noopener">${esc(d.source||"원문")} 보기</a>`:d.source?`<span>${esc(d.source)}</span>`:""}
+        ${formLink("deal",`정보가 틀렸어요`,`[${b.name}] ${d.title}`)}</div>
+    </div>
+  </article>`;
+}
+function sponsorCard(s){
+  const h = here(), dist = (s.lat && s.lng) ? km(h.lat,h.lng,+s.lat,+s.lng) : null;
+  const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent((s.name||"")+" "+(s.addr||""))}`;
+  return `<article class="coupon">
+    <div class="stub"><b style="font-size:19px">협찬</b>${dist!=null?`<span class="dist">${dist.toFixed(1)}km</span>`:""}${s.until?`<em>~${fmtDate(s.until)}</em>`:""}</div>
+    <div class="cbody">
+      <div class="ctop"><span class="tag partner">파트너</span>${s.cat?`<span class="muted">${esc(s.cat)}</span>`:""}</div>
+      <h3>${esc(s.name)} · ${esc(s.deal)}</h3>
+      <div class="meta">${s.addr?`<span>${esc(s.addr)}</span>`:""}${s.phone?`<span>${esc(s.phone)}</span>`:""}<a href="${maps}" target="_blank" rel="noopener">지도 열기</a>
+        ${formLink("deal",`정보가 틀렸어요`,`[한인 업소] ${s.name}`)}</div>
+    </div>
+  </article>`;
+}
+function formLink(kind, label){
+  const url = kind==="sponsor" ? CONFIG.sponsorFormUrl : CONFIG.dealFormUrl;
+  return url ? `<a class="linkbtn" href="${esc(url)}" target="_blank" rel="noopener">${label}</a>` : "";
+}
+const emptyBox = msg => `<div class="empty">${msg}</div>`;
+
+function renderUpdated(){
+  const m = state.meta;
+  if (!m || !m.lastRun) { $("updated").textContent = "매일 아침 AI가 딜을 확인해 업데이트합니다."; return; }
+  const t = new Date(m.lastRun);
+  $("updated").innerHTML = `<span>마지막 업데이트 <b>${t.toLocaleString("ko-KR",{month:"long",day:"numeric",hour:"numeric",minute:"2-digit"})}</b></span>${m.summary?`<span>· ${esc(m.summary)}</span>`:""}`;
+}
+function renderToday(){
+  $("todayLabel").textContent = new Date().toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"short"});
+  const active = state.deals.filter(d => activeOn(d,todayStr));
+  const brands = [...new Set(active.map(d=>d.brand))];
+  if (state.brand!=="all" && !brands.includes(state.brand)) state.brand = "all";
+  $("brandChips").innerHTML = [["all",`전체 ${active.length}`],...brands.map(k=>[k,brandOf(k).name])]
+    .map(([k,n]) => `<button class="chip" data-brand="${k}" aria-pressed="${state.brand===k}">${n}</button>`).join("");
+  const shown = active.filter(d => state.brand==="all" || d.brand===state.brand).sort((a,b)=>a.end.localeCompare(b.end));
+  $("todayList").innerHTML = shown.length ? shown.map(dealCard).join("") :
+    emptyBox(state.deals.length ? "오늘 진행 중인 딜이 없어요. 캘린더에서 다가오는 딜을 확인하세요." : "아직 등록된 딜이 없어요. 매일 아침 AI가 딜을 확인해 올립니다.");
+}
+function renderCalendar(){
+  const m = state.month, y = m.getFullYear(), mo = m.getMonth();
+  $("monthLabel").textContent = `${y}년 ${mo+1}월`;
+  const startPad = new Date(y,mo,1).getDay();
+  const cells = ["일","월","화","수","목","금","토"].map(d=>`<div class="dow">${d}</div>`);
+  for (let i=0;i<42;i++){
+    const d = new Date(y,mo,1-startPad+i), s = ymd(d);
+    if (i>=35 && d.getMonth()!==mo) break;
+    const act = state.deals.filter(x=>activeOn(x,s));
+    const dots = [...new Set(act.map(x=>x.brand))].slice(0,6).map(k=>`<i style="background:${brandOf(k).color}" title="${brandOf(k).name}"></i>`).join("");
+    cells.push(`<button class="day${d.getMonth()!==mo?" out":""}${s===todayStr?" today":""}" data-day="${s}" aria-pressed="${s===state.selDay}" aria-label="${d.getMonth()+1}월 ${d.getDate()}일 딜 ${act.length}개"><span class="n">${d.getDate()}</span><span class="dots">${dots}</span>${act.length?`<span class="cnt">${act.length}개</span>`:""}</button>`);
+  }
+  $("cal").innerHTML = cells.join("");
+  const list = state.deals.filter(x=>activeOn(x,state.selDay)).sort((a,b)=>a.end.localeCompare(b.end));
+  $("dayTitle").textContent = `${fmtDate(state.selDay)} 진행 중인 딜 ${list.length}개`;
+  $("dayList").innerHTML = list.length ? list.map(dealCard).join("") : emptyBox("이 날짜에 진행 중인 딜이 없어요.");
+}
+function renderNearby(){
+  const h = here();
+  $("nearLabel").textContent = h.name+" 기준";
+  const withDeals = new Set(state.deals.filter(d=>activeOn(d,todayStr)).map(d=>d.brand));
+  const keys = Object.keys(BRANDS).filter(k=>k!=="other"&&k!=="korean").sort((x,y)=>withDeals.has(y)-withDeals.has(x));
+  $("chainGrid").innerHTML = keys.map(k => {
+    const b = BRANDS[k], href = `https://www.google.com/maps/search/${encodeURIComponent(b.en)}/@${h.lat},${h.lng},14z`;
+    return `<a class="chain" href="${href}" target="_blank" rel="noopener"><span class="brand" style="background:${b.color}">${esc(b.en)}</span>${withDeals.has(k)?`<span class="tag new">딜</span>`:`<span class="muted">지도</span>`}</a>`;
+  }).join("");
+  const near = state.sponsors.filter(s=>s.lat&&s.lng).map(s=>({s,d:km(h.lat,h.lng,+s.lat,+s.lng)})).sort((x,y)=>x.d-y.d).slice(0,5);
+  $("nearKorean").innerHTML = near.length ? near.map(x=>sponsorCard(x.s)).join("") : emptyBox("아직 등록된 협찬 업소가 없어요.");
+}
+function renderKorean(){
+  const h = here();
+  const list = state.sponsors.filter(s => !s.until || s.until >= todayStr)
+    .map(s=>({s,d:(s.lat&&s.lng)?km(h.lat,h.lng,+s.lat,+s.lng):1e9})).sort((x,y)=>x.d-y.d);
+  $("sponsorList").innerHTML = list.length ? list.map(x=>sponsorCard(x.s)).join("") :
+    emptyBox("협찬 업소를 모집 중이에요. 아래 ‘협찬 문의’로 신청할 수 있어요.");
+}
+function render(){
+  ({today:renderToday,calendar:renderCalendar,nearby:renderNearby,korean:renderKorean})[state.view]();
+  renderUpdated();
+}
+
+document.querySelectorAll("[data-form]").forEach(a => {
+  const url = a.dataset.form==="sponsor" ? CONFIG.sponsorFormUrl : CONFIG.dealFormUrl;
+  if (url) a.href = url;
+  else { a.removeAttribute("href"); a.removeAttribute("target"); a.setAttribute("aria-disabled","true"); a.style.opacity=".55"; a.textContent += " (준비 중)"; }
+});
+document.addEventListener("click", e => {
+  const chip = e.target.closest("[data-brand]"); if (chip){ state.brand = chip.dataset.brand; render(); return; }
+  const day = e.target.closest("[data-day]"); if (day){ state.selDay = day.dataset.day; render(); }
+});
+$("prevM").onclick = () => { state.month = new Date(state.month.getFullYear(), state.month.getMonth()-1, 1); render(); };
+$("nextM").onclick = () => { state.month = new Date(state.month.getFullYear(), state.month.getMonth()+1, 1); render(); };
+
+setView(state.view);
+
+(async () => {
+  const get = async f => { const r = await fetch(`data/${f}?v=${Date.now()}`); if (!r.ok) throw new Error(f+" "+r.status); return r.json(); };
+  try {
+    const [deals, sponsors, meta] = await Promise.all([get("deals.json"), get("sponsors.json"), get("meta.json").catch(()=>null)]);
+    state.deals = (Array.isArray(deals)?deals:[]).filter(d=>d.start&&d.end);
+    state.sponsors = Array.isArray(sponsors)?sponsors:[];
+    state.meta = meta;
+  } catch(err) {
+    $("updated").textContent = "딜 정보를 불러오지 못했어요. 잠시 후 새로고침해 주세요.";
+    return;
+  }
+  render();
+})();
+</script>
+</body>
+</html>
