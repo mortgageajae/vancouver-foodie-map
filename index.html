@@ -30,24 +30,26 @@
   --color-main:#8FA3EE; --color-main-soft:#2B3566; --color-bg:#12141B; --color-surface:#1B1E28; --color-text:#EFE9DC;
   --color-text-muted:#A9A496; --color-line:#3B3E4B; --color-on-main:#12141B; --color-alert:#FF8A72; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);font-size:17px;line-height:1.7}
+body{background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);font-size:16px;line-height:1.65}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--color-bg)}
-.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:520px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 button,select,input,textarea{font-family:var(--font-body)}
 :focus-visible{outline:3px solid var(--color-point);outline-offset:2px}
 
 /* header */
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--color-bg);border-bottom:2px solid var(--color-line)}
-header .wrap{padding-block:14px 0;display:flex;flex-direction:column;gap:8px}
-.brandrow{display:flex;align-items:center;justify-content:space-between;gap:10px 16px;flex-wrap:wrap}
-.logo-name{margin:0;font-family:var(--font-display);font-weight:400;font-size:28px;line-height:1.1}
+header .wrap{padding-block:12px 12px;display:flex;flex-direction:column;gap:10px}
+.brandrow{display:flex;flex-direction:column;gap:10px}
+.logo-name{margin:0;font-family:var(--font-display);font-weight:400;font-size:25px;line-height:1.1}
 .logo-name span{background:linear-gradient(transparent 62%,var(--color-point) 62%);padding-inline:2px}
 .logo-sub{display:block;font-family:var(--font-body);font-size:13px;color:var(--color-text-muted);margin-top:2px}
 .area{display:flex;align-items:center;gap:8px;font-size:14px;-webkit-text-stroke:var(--text-stroke-ui)}
 select{font-size:15px;padding:7px 12px;border-radius:var(--btn-radius);border:2px solid var(--color-line);background:var(--color-surface);color:var(--color-text)}
-nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
-nav button{font-size:16px;background:none;border:0;color:var(--color-text-muted);padding:8px 12px 10px;cursor:pointer;white-space:nowrap;-webkit-text-stroke:var(--text-stroke-ui);border-bottom:4px solid transparent}
-nav button[aria-selected="true"]{color:var(--color-text);border-bottom-color:var(--color-point)}
+nav.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--color-surface);border-top:2px solid var(--color-line);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav.tabbar .tabs{max-width:520px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+nav.tabbar button{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12.5px;background:none;border:0;color:var(--color-text-muted);padding:8px 2px 9px;cursor:pointer;-webkit-text-stroke:.3px;border-top:3px solid transparent;margin-top:-2px}
+nav.tabbar button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+nav.tabbar button[aria-selected="true"]{color:var(--color-main);border-top-color:var(--color-main)}
 
 /* pills */
 .pill{display:inline-flex;align-items:center;gap:6px;border-radius:var(--btn-radius);padding:11px 20px;font-size:16px;cursor:pointer;border:2px solid var(--color-main);background:var(--color-main);color:var(--color-on-main);-webkit-text-stroke:var(--text-stroke-ui);text-decoration:none;transition:transform .15s}
@@ -56,9 +58,9 @@ nav button[aria-selected="true"]{color:var(--color-text);border-bottom-color:var
 .pill.yellow{background:var(--color-point);border-color:var(--color-point);color:var(--color-on-point)}
 .pill.sm{padding:5px 13px;font-size:14px}
 
-main .wrap{padding-block:22px 40px;display:flex;flex-direction:column;gap:18px}
+main .wrap{padding-block:16px 28px;display:flex;flex-direction:column;gap:16px}
 .lede{display:flex;justify-content:space-between;align-items:baseline;gap:4px 12px;flex-wrap:wrap}
-h2{font-family:var(--font-display);font-weight:400;font-size:24px;margin:0;line-height:1.3;text-wrap:balance}
+h2{font-family:var(--font-display);font-weight:400;font-size:21px;margin:0;line-height:1.3;text-wrap:balance}
 h2 .hl{background:linear-gradient(transparent 60%,var(--color-point) 60%)}
 .muted{color:var(--color-text-muted);font-size:14px}
 .updated{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px;color:var(--color-text-muted)}
@@ -70,16 +72,16 @@ h2 .hl{background:linear-gradient(transparent 60%,var(--color-point) 60%)}
 
 /* coupon card */
 .list{display:flex;flex-direction:column;gap:12px}
-.coupon{display:grid;grid-template-columns:104px 1fr;background:var(--color-surface);border:2px solid var(--color-line);border-radius:var(--card-radius);transition:transform .15s,border-color .15s}
+.coupon{display:grid;grid-template-columns:86px 1fr;background:var(--color-surface);border:2px solid var(--color-line);border-radius:var(--card-radius);transition:transform .15s,border-color .15s}
 .coupon:hover{border-color:var(--color-main);transform:translateY(-2px)}
 .stub{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:14px 6px;border-right:2px dashed var(--color-line);text-align:center}
-.stub b{font-family:var(--font-display);font-weight:400;font-size:24px;line-height:1.15;color:var(--color-main)}
+.stub b{font-family:var(--font-display);font-weight:400;font-size:21px;line-height:1.15;color:var(--color-main)}
 .stub s{font-family:var(--font-num);font-size:13px;color:var(--color-text-muted)}
 .stub em{font-style:normal;font-size:12.5px;color:var(--color-text-muted);margin-top:4px}
-.cbody{padding:14px 18px;min-width:0;display:flex;flex-direction:column;gap:4px}
+.cbody{padding:12px 14px;min-width:0;display:flex;flex-direction:column;gap:4px}
 .ctop{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .brand{font-family:var(--font-num);font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:4px;color:#fff}
-.cbody h3{margin:0;font-size:18px;line-height:1.45;-webkit-text-stroke:.3px;text-wrap:balance}
+.cbody h3{margin:0;font-size:16.5px;line-height:1.45;-webkit-text-stroke:.3px;text-wrap:balance}
 .meta{font-size:14px;color:var(--color-text-muted);display:flex;gap:4px 12px;flex-wrap:wrap;align-items:center}
 .meta a{color:var(--color-main)}
 .tag{font-size:12px;padding:1px 9px;border-radius:var(--btn-radius);line-height:1.6}
@@ -94,7 +96,7 @@ h2 .hl{background:linear-gradient(transparent 60%,var(--color-point) 60%)}
 .empty{background:var(--color-surface);border:2px dashed var(--color-line);border-radius:var(--card-radius);padding:24px 20px;color:var(--color-text-muted);text-align:center}
 
 /* report band (상담 띠) */
-.band{background:var(--color-main);color:var(--color-on-main);border-radius:var(--card-radius);padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.band{background:var(--color-main);color:var(--color-on-main);border-radius:var(--card-radius);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .band p{margin:0;font-size:16px}
 .band strong{font-family:var(--font-display);font-weight:400;font-size:20px;display:block}
 
@@ -102,7 +104,7 @@ h2 .hl{background:linear-gradient(transparent 60%,var(--color-point) 60%)}
 .calhead{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
 .dow{font-size:13px;color:var(--color-text-muted);text-align:center}
-.day{text-align:left;min-height:74px;background:var(--color-surface);border:2px solid var(--color-line);border-radius:6px;padding:4px 6px;display:flex;flex-direction:column;gap:3px;cursor:pointer;color:var(--color-text);min-width:0}
+.day{text-align:left;min-height:58px;background:var(--color-surface);border:2px solid var(--color-line);border-radius:6px;padding:4px 6px;display:flex;flex-direction:column;gap:3px;cursor:pointer;color:var(--color-text);min-width:0}
 .day.out{opacity:.4}
 .day.today{border-color:var(--color-main)}
 .day[aria-pressed="true"]{background:var(--color-main-soft)}
@@ -112,7 +114,7 @@ h2 .hl{background:linear-gradient(transparent 60%,var(--color-point) 60%)}
 .day .cnt{font-size:11.5px;color:var(--color-text-muted);margin-top:auto}
 
 /* nearby */
-.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .chain{display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--color-surface);border:2px solid var(--color-line);border-radius:var(--card-radius);padding:11px 13px;color:var(--color-text);text-decoration:none;font-size:15px;transition:transform .15s,border-color .15s}
 .chain:hover{border-color:var(--color-main);transform:translateY(-2px)}
 .dist{font-family:var(--font-num);font-size:13px;color:var(--color-main);font-variant-numeric:tabular-nums}
@@ -139,14 +141,13 @@ dialog::backdrop{background:rgba(20,22,31,.45)}
 dialog h2{font-size:22px}
 
 footer{border-top:2px solid var(--color-line)}
-footer .wrap{padding-block:18px 28px;font-size:13.5px;color:var(--color-text-muted);display:flex;flex-direction:column;gap:4px}
+footer .wrap{padding-block:16px calc(96px + env(safe-area-inset-bottom,0px));font-size:13.5px;color:var(--color-text-muted);display:flex;flex-direction:column;gap:4px}
 footer strong{color:var(--color-text);font-weight:400;-webkit-text-stroke:var(--text-stroke-ui)}
 
-@media (max-width:520px){
-  body{font-size:16px}
-  .coupon{grid-template-columns:82px 1fr}.stub b{font-size:20px}.cbody{padding:12px 14px}
-  .day{min-height:56px;padding:3px 4px}.form{grid-template-columns:1fr}
-  .logo-name{font-size:24px}
+@media (max-width:380px){
+  .coupon{grid-template-columns:74px 1fr}.stub b{font-size:18px}
+  .day{min-height:50px;padding:3px}
+  nav.tabbar button{font-size:11.5px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.pill:hover,.coupon:hover,.chain:hover{transform:none}}
 </style>
@@ -156,7 +157,16 @@ html{color-scheme:light}
 body{margin:0}
 img{max-width:100%}
 [hidden]{display:none!important}
-.locrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.locrow{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:8px}
+.locrow .area{min-width:0}.locrow select{width:100%;min-width:0}
+/* 상시 할인가: 기간 한정 딜과 구분해 작게 */
+.always{background:var(--color-surface);border:2px solid var(--color-line);border-radius:var(--card-radius);padding:12px 14px}
+.always h3{margin:0 0 6px;font-size:15px;-webkit-text-stroke:.3px}
+.always ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.always li{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;padding:7px 0;border-top:1px dashed var(--color-line);font-size:14.5px;line-height:1.4}
+.always li:first-child{border-top:0}
+.always li b{font-family:var(--font-display);font-weight:400;color:var(--color-main);font-size:17px}
+.always li a{font-size:12.5px;color:var(--color-text-muted)}
 .gps{font-size:14px;padding:6px 14px}
 .privacy{font-size:12.5px;color:var(--color-text-muted)}
 </style>
@@ -168,15 +178,9 @@ img{max-width:100%}
       <h1 class="logo-name"><span>밴쿠버 푸디맵</span><small class="logo-sub">Vancouver Foodie Map · 오늘의 패스트푸드 딜 &amp; 한인 맛집</small></h1>
       <div class="locrow">
         <button class="pill ghost gps" id="gpsBtn" type="button">📍 내 위치</button>
-        <label class="area" for="area">동네 <select id="area"></select></label>
+        <label class="area" for="area"><select id="area" aria-label="동네 선택"></select></label>
       </div>
     </div>
-    <nav role="tablist" aria-label="보기">
-      <button role="tab" data-view="today" aria-selected="true">오늘의 딜</button>
-      <button role="tab" data-view="calendar" aria-selected="false">캘린더</button>
-      <button role="tab" data-view="nearby" aria-selected="false">내 주변</button>
-      <button role="tab" data-view="korean" aria-selected="false">한인 맛집</button>
-    </nav>
   </div>
 </header>
 
@@ -187,6 +191,7 @@ img{max-width:100%}
     <div class="lede"><h2><span class="hl">오늘</span> 쓸 수 있는 딜</h2><span class="muted" id="todayLabel"></span></div>
     <div class="chips" id="brandChips" style="margin-block:12px"></div>
     <div class="list" id="todayList"></div>
+    <div class="always" id="alwaysBox" hidden style="margin-top:12px"><h3>매일 이 가격 · 상시 할인가</h3><ul id="alwaysList"></ul></div>
   </section>
 
   <section id="v-calendar" hidden>
@@ -222,6 +227,12 @@ img{max-width:100%}
   </div>
 </div></main>
 
+<nav class="tabbar" role="tablist" aria-label="보기"><div class="tabs">
+  <button role="tab" data-view="today" aria-selected="true"><svg viewBox="0 0 24 24"><path d="M4 7h16v4a2 2 0 0 0 0 4v4H4v-4a2 2 0 0 0 0-4z"/><path d="M14 7v12" stroke-dasharray="2 2"/></svg>오늘의 딜</button>
+  <button role="tab" data-view="calendar" aria-selected="false"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>캘린더</button>
+  <button role="tab" data-view="nearby" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>내 주변</button>
+  <button role="tab" data-view="korean" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M5 11h14l-1.5 8.5h-11z"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>한인 맛집</button>
+</div></nav>
 <footer><div class="wrap">
   <span><strong>밴쿠버 푸디맵</strong> – 모기지아재 제공</span>
   <span>딜 정보는 RFD, Reddit, 브랜드 공식 사이트와 뉴스를 AI가 매일 아침 확인해 정리합니다. 매장마다 참여 여부가 다를 수 있으니 주문 전에 앱이나 매장에서 확인하세요.</span>
@@ -294,10 +305,10 @@ $("gpsBtn").addEventListener("click", () => {
   }, {enableHighAccuracy:false, timeout:10000, maximumAge:300000});
 });
 
-document.querySelectorAll("nav button").forEach(b => b.addEventListener("click", () => setView(b.dataset.view)));
+document.querySelectorAll("nav.tabbar button").forEach(b => b.addEventListener("click", () => setView(b.dataset.view)));
 function setView(v){
   state.view = v;
-  document.querySelectorAll("nav button").forEach(b => b.setAttribute("aria-selected", b.dataset.view===v));
+  document.querySelectorAll("nav.tabbar button").forEach(b => b.setAttribute("aria-selected", b.dataset.view===v));
   VIEWS.forEach(k => $("v-"+k).hidden = k!==v);
   try{localStorage.setItem("fm-view",v)}catch(_){}
   if (location.hash.slice(1)!==v) history.replaceState(null,"","#"+v);
@@ -311,7 +322,8 @@ function here(){
   return {name:a[1], lat:a[2], lng:a[3]};
 }
 function km(lat1,lng1,lat2,lng2){const R=6371,r=Math.PI/180,dLa=(lat2-lat1)*r,dLo=(lng2-lng1)*r;const h=Math.sin(dLa/2)**2+Math.cos(lat1*r)*Math.cos(lat2*r)*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
-const activeOn = (d, day) => d.start <= day && day <= d.end;
+const activeOn = (d, day) => !d.always && d.start <= day && day <= d.end;
+const alwaysOn = day => state.deals.filter(d => d.always && d.start <= day && day <= d.end);
 
 function dealCard(d){
   const b = brandOf(d.brand), left = daysBetween(todayStr, d.end), tags = [];
@@ -364,6 +376,12 @@ function renderToday(){
   $("brandChips").innerHTML = [["all",`전체 ${active.length}`],...brands.map(k=>[k,brandOf(k).name])]
     .map(([k,n]) => `<button class="chip" data-brand="${k}" aria-pressed="${state.brand===k}">${n}</button>`).join("");
   const shown = active.filter(d => state.brand==="all" || d.brand===state.brand).sort((a,b)=>a.end.localeCompare(b.end));
+  const always = alwaysOn(todayStr);
+  $("alwaysBox").hidden = !always.length;
+  $("alwaysList").innerHTML = always.map(d => {
+    const b = brandOf(d.brand), url = safeUrl(d.url);
+    return `<li><span class="brand" style="background:${b.color}">${esc(b.en||b.name)}</span><span>${esc(d.title)}${url?` <a href="${esc(url)}" target="_blank" rel="noopener">출처</a>`:""}</span><b>${d.price?`$${esc(d.price)}`:""}</b></li>`;
+  }).join("");
   $("todayList").innerHTML = shown.length ? shown.map(dealCard).join("") :
     emptyBox(state.deals.length ? "오늘 진행 중인 딜이 없어요. 캘린더에서 다가오는 딜을 확인하세요." : "아직 등록된 딜이 없어요. 매일 아침 AI가 딜을 확인해 올립니다.");
 }
