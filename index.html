@@ -245,7 +245,8 @@ img{max-width:100%}
 <script>
 /* 설정: 구글 폼을 만든 뒤 주소를 넣으세요. 비어 있으면 버튼이 '준비 중'으로 표시됩니다. */
 const CONFIG = {
-  dealFormUrl: "https://docs.google.com/forms/d/1JzxOHK404JvWsgogA0nbUWlIDCVtz7VIl_H79AbQFO4/viewform",     // 딜 제보 · 오류 신고 폼
+  dealFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdbuDwgcsDEICoduzc20HiPwvXAJ-77ySrmGffD_vbMfK5mpA/viewform",     // 딜 제보 · 오류 신고 폼
+  dealFormFields: {type:"entry.1072312916", brand:"entry.1475408856", message:"entry.814182761"},  // 미리 채우기용 질문 ID
   sponsorFormUrl: ""   // 협찬 문의 폼
 };
 
@@ -366,7 +367,7 @@ function dealCard(d){
       <h3>${esc(d.title)}</h3>
       <div class="meta">${d.how?`<span>${esc(d.how)}</span>`:""}${d.code?`<span>코드 <span class="code">${esc(d.code)}</span></span>`:""}<span>${fmtDate(d.start)} – ${fmtDate(d.end)}</span>${url?`<a href="${esc(url)}" target="_blank" rel="noopener">${esc(d.source||"원문")} 보기</a>`:d.source?`<span>${esc(d.source)}</span>`:""}
         ${appLink(d.brand)?`<a class="applink" href="${esc(appLink(d.brand))}" target="_blank" rel="noopener">📲 앱 받기</a>`:""}
-        ${formLink("deal",`정보가 틀렸어요`,`[${b.name}] ${d.title}`)}</div>
+        ${formLink("deal",`정보가 틀렸어요`,`[${b.name}] ${d.title}`, b.name)}</div>
     </div>
   </article>`;
 }
@@ -379,13 +380,23 @@ function sponsorCard(s){
       <div class="ctop"><span class="tag partner">파트너</span>${s.cat?`<span class="muted">${esc(s.cat)}</span>`:""}</div>
       <h3>${esc(s.name)} · ${esc(s.deal)}</h3>
       <div class="meta">${s.addr?`<span>${esc(s.addr)}</span>`:""}${s.phone?`<span>${esc(s.phone)}</span>`:""}<a href="${maps}" target="_blank" rel="noopener">지도 열기</a>
-        ${formLink("deal",`정보가 틀렸어요`,`[한인 업소] ${s.name}`)}</div>
+        ${formLink("deal",`정보가 틀렸어요`,`[한인 업소] ${s.name}`, "한인 업소")}</div>
     </div>
   </article>`;
 }
-function formLink(kind, label){
+/* 카드의 '정보가 틀렸어요'는 요청 종류·브랜드·대상 딜을 미리 채운 폼을 연다 */
+function formLink(kind, label, about, brand){
   const url = kind==="sponsor" ? CONFIG.sponsorFormUrl : CONFIG.dealFormUrl;
-  return url ? `<a class="linkbtn" href="${esc(url)}" target="_blank" rel="noopener">${label}</a>` : "";
+  if (!url) return "";
+  let href = url;
+  if (kind==="deal" && about){
+    const f = CONFIG.dealFormFields, p = new URLSearchParams({usp:"pp_url"});
+    p.set(f.type, "정보 오류 신고");
+    if (brand) p.set(f.brand, brand);
+    p.set(f.message, `${about}\n→ `);
+    href = `${url}?${p}`;
+  }
+  return `<a class="linkbtn" href="${esc(href)}" target="_blank" rel="noopener">${label}</a>`;
 }
 const emptyBox = msg => `<div class="empty">${msg}</div>`;
 
