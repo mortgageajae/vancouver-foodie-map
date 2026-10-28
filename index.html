@@ -117,6 +117,10 @@ h2 .hl{background:linear-gradient(transparent 60%,var(--color-point) 60%)}
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .chain{display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--color-surface);border:2px solid var(--color-line);border-radius:var(--card-radius);padding:11px 13px;color:var(--color-text);text-decoration:none;font-size:15px;transition:transform .15s,border-color .15s}
 .chain:hover{border-color:var(--color-main);transform:translateY(-2px)}
+.chaincell{display:flex;flex-direction:column;gap:4px;min-width:0}
+.chaincell .applink{align-self:center}
+.applink{display:inline-flex;align-items:center;gap:3px;font-size:13px;padding:2px 10px;border-radius:var(--btn-radius);background:var(--color-main-soft);color:var(--color-text);text-decoration:none;-webkit-text-stroke:.2px}
+.applink:hover{background:var(--color-point)}
 .dist{font-family:var(--font-num);font-size:13px;color:var(--color-main);font-variant-numeric:tabular-nums}
 
 /* admin + forms */
@@ -259,6 +263,28 @@ const BRANDS = {
   korean:{name:"한인 업소",en:"Korean",color:"#324CA8"},
   other:{name:"기타",en:"",color:"#5A5A52"}
 };
+/* 브랜드 공식 앱. ID를 확인하지 못한 곳은 스토어 검색이나 공식 앱 안내 페이지로 보낸다 */
+const APPS = {
+  mcd:     {ios:"https://apps.apple.com/ca/app/mcdonalds-canada/id375695000", android:"com.mcdonalds.superapp", page:"https://www.mcdonalds.com/ca/en-ca/getmoremcds/mcdonaldsapp.html"},
+  wendys:  {ios:"https://apps.apple.com/ca/app/wendys-canada/id540518599", android:"com.wendys.canada"},
+  aw:      {ios:"https://apps.apple.com/ca/app/a-w/id1236416092", search:"A&W Canada"},
+  subway:  {search:"Subway"},
+  dq:      {android:"com.dairyqueen.ca.android.loyaltyapp.production", page:"https://www.dairyqueen.com/en-ca/app/"},
+  bk:      {android:"com.emn8.mobilem8.nativeapp.bkca", search:"Burger King Canada"},
+  tims:    {android:"digital.rbi.timhortons", search:"Tim Hortons"},
+  popeyes: {android:"com.emn8.mobilem8.nativeapp.plkca", search:"Popeyes Canada"},
+  kfc:     {ios:"https://apps.apple.com/ca/app/kfc-canada/id653810744", search:"KFC Canada"},
+  pizzahut:{android:"com.pizzahut.canada", search:"Pizza Hut Canada"}
+};
+const PLATFORM = /iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1) ? "ios"
+  : /Android/i.test(navigator.userAgent) ? "android" : "desktop";
+function appLink(brand){
+  const a = APPS[brand]; if (!a) return "";
+  const q = encodeURIComponent(a.search || (BRANDS[brand]||{}).en || "");
+  if (PLATFORM==="ios") return a.ios || a.page || "";
+  if (PLATFORM==="android") return a.android ? `https://play.google.com/store/apps/details?id=${a.android}` : (q ? `https://play.google.com/store/search?q=${q}&c=apps` : a.page || "");
+  return a.page || a.ios || (a.android ? `https://play.google.com/store/apps/details?id=${a.android}` : "");
+}
 const AREAS = [
   ["coquitlam","코퀴틀람",49.2785,-122.7963],["portmoody","포트무디",49.2838,-122.8317],
   ["burnaby","버나비 메트로타운",49.2276,-123.0076],["lougheed","버나비 로히드",49.2486,-122.8970],
@@ -339,6 +365,7 @@ function dealCard(d){
       <div class="ctop"><span class="brand" style="background:${b.color}">${esc(b.en||b.name)}</span>${tags.join("")}</div>
       <h3>${esc(d.title)}</h3>
       <div class="meta">${d.how?`<span>${esc(d.how)}</span>`:""}${d.code?`<span>코드 <span class="code">${esc(d.code)}</span></span>`:""}<span>${fmtDate(d.start)} – ${fmtDate(d.end)}</span>${url?`<a href="${esc(url)}" target="_blank" rel="noopener">${esc(d.source||"원문")} 보기</a>`:d.source?`<span>${esc(d.source)}</span>`:""}
+        ${appLink(d.brand)?`<a class="applink" href="${esc(appLink(d.brand))}" target="_blank" rel="noopener">📲 앱 받기</a>`:""}
         ${formLink("deal",`정보가 틀렸어요`,`[${b.name}] ${d.title}`)}</div>
     </div>
   </article>`;
@@ -409,7 +436,8 @@ function renderNearby(){
   const keys = Object.keys(BRANDS).filter(k=>k!=="other"&&k!=="korean").sort((x,y)=>withDeals.has(y)-withDeals.has(x));
   $("chainGrid").innerHTML = keys.map(k => {
     const b = BRANDS[k], href = `https://www.google.com/maps/search/${encodeURIComponent(b.en)}/@${h.lat},${h.lng},14z`;
-    return `<a class="chain" href="${href}" target="_blank" rel="noopener"><span class="brand" style="background:${b.color}">${esc(b.en)}</span>${withDeals.has(k)?`<span class="tag new">딜</span>`:`<span class="muted">지도</span>`}</a>`;
+    const app = appLink(k);
+    return `<div class="chaincell"><a class="chain" href="${href}" target="_blank" rel="noopener"><span class="brand" style="background:${b.color}">${esc(b.en)}</span>${withDeals.has(k)?`<span class="tag new">딜</span>`:`<span class="muted">지도</span>`}</a>${app?`<a class="applink" href="${esc(app)}" target="_blank" rel="noopener">📲 앱 받기</a>`:""}</div>`;
   }).join("");
   const near = state.sponsors.filter(s=>s.lat&&s.lng).map(s=>({s,d:km(h.lat,h.lng,+s.lat,+s.lng)})).sort((x,y)=>x.d-y.d).slice(0,5);
   $("nearKorean").innerHTML = near.length ? near.map(x=>sponsorCard(x.s)).join("") : emptyBox("아직 등록된 협찬 업소가 없어요.");
