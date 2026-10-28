@@ -148,6 +148,30 @@ footer{border-top:2px solid var(--color-line)}
 footer .wrap{padding-block:16px calc(96px + env(safe-area-inset-bottom,0px));font-size:13.5px;color:var(--color-text-muted);display:flex;flex-direction:column;gap:4px}
 footer strong{color:var(--color-text);font-weight:400;-webkit-text-stroke:var(--text-stroke-ui)}
 
+/* 제보 · 협찬 양식 (아래에서 올라오는 시트) */
+dialog.sheet{border:0;padding:0;margin:auto auto 0;width:100%;max-width:520px;max-height:92dvh;border-radius:16px 16px 0 0;background:var(--color-surface);color:var(--color-text)}
+dialog.sheet::backdrop{background:rgba(20,22,31,.5)}
+.sheet form{display:flex;flex-direction:column;gap:14px;padding:18px max(18px,env(safe-area-inset-left,0px)) calc(18px + env(safe-area-inset-bottom,0px))}
+.sheet .grab{width:44px;height:5px;border-radius:3px;background:var(--color-line);margin:0 auto}
+.sheet h2{font-size:22px}
+.sheet .hint{margin:-8px 0 0;font-size:14px;color:var(--color-text-muted)}
+.field{display:flex;flex-direction:column;gap:6px}
+.field>span{font-size:14px;-webkit-text-stroke:.3px}
+.field>span em{font-style:normal;color:var(--color-alert);margin-left:2px}
+.field input,.field select,.field textarea{font:inherit;font-size:16px;padding:11px 13px;border:2px solid var(--color-line);border-radius:8px;background:var(--color-bg);color:var(--color-text);min-width:0;width:100%}
+.field textarea{min-height:110px;resize:vertical;line-height:1.55}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--color-main)}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.seg label{position:relative}
+.seg input{position:absolute;opacity:0;inset:0}
+.seg span{display:block;text-align:center;padding:9px 4px;border:2px solid var(--color-line);border-radius:var(--btn-radius);font-size:14px;background:var(--color-bg);cursor:pointer;-webkit-text-stroke:.3px}
+.seg input:checked+span{background:var(--color-main);border-color:var(--color-main);color:var(--color-on-main)}
+.seg input:focus-visible+span{outline:3px solid var(--color-point);outline-offset:2px}
+.sheet .actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.sheet .status{font-size:14px;margin:0;min-height:1.2em}
+.sheet .status.ok{color:var(--color-main)}.sheet .status.err{color:var(--color-alert)}
+.sheet .done{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:26px 8px}
+.sheet .done b{font-family:var(--font-display);font-weight:400;font-size:24px}
 @media (max-width:380px){
   .coupon{grid-template-columns:74px 1fr}.stub b{font-size:18px}
   .day{min-height:50px;padding:3px}
@@ -225,8 +249,8 @@ img{max-width:100%}
   <div class="band">
     <p><strong>못 본 딜이 있나요?</strong>제보해 주시면 AI가 확인해서 다음 날 아침 업데이트 때 올려요.</p>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <a class="pill yellow" data-form="deal" href="#" target="_blank" rel="noopener">딜 제보 · 오류 신고</a>
-      <a class="pill ghost" data-form="sponsor" href="#" target="_blank" rel="noopener" style="color:var(--color-on-main);border-color:var(--color-on-main)">협찬 문의</a>
+      <button class="pill yellow" type="button" data-open="deal">딜 제보 · 오류 신고</button>
+      <button class="pill ghost" type="button" data-open="sponsor" style="color:var(--color-on-main);border-color:var(--color-on-main)">협찬 문의</button>
     </div>
   </div>
 </div></main>
@@ -237,6 +261,39 @@ img{max-width:100%}
   <button role="tab" data-view="nearby" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>내 주변</button>
   <button role="tab" data-view="korean" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M5 11h14l-1.5 8.5h-11z"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>한인 맛집</button>
 </div></nav>
+<dialog class="sheet" id="dealSheet" aria-labelledby="dealSheetTitle">
+  <form id="dealForm" novalidate>
+    <div class="grab" aria-hidden="true"></div>
+    <h2 id="dealSheetTitle">딜 제보 · 오류 신고</h2>
+    <p class="hint">놓친 딜이나 틀린 정보를 알려 주세요. AI가 다음 날 아침 확인해서 반영해요.</p>
+    <div class="field"><span>요청 종류<em>*</em></span>
+      <div class="seg" role="radiogroup" aria-label="요청 종류">
+        <label><input type="radio" name="dtype" value="새 딜 제보" checked><span>새 딜</span></label>
+        <label><input type="radio" name="dtype" value="정보 오류 신고"><span>정보 오류</span></label>
+        <label><input type="radio" name="dtype" value="끝난 딜 신고"><span>끝난 딜</span></label>
+      </div></div>
+    <label class="field"><span>브랜드<em>*</em></span><select id="d-brand" required></select></label>
+    <label class="field"><span>내용<em>*</em></span><textarea id="d-msg" required maxlength="1500" placeholder="예: A&W 앱에 틴버거 콤보 $8.99 쿠폰이 11월 10일까지 있어요."></textarea></label>
+    <label class="field"><span>참고 링크 (선택)</span><input id="d-link" type="url" inputmode="url" placeholder="https://"></label>
+    <p class="status" id="dealStatus" role="status"></p>
+    <div class="actions"><button class="pill ghost" type="button" data-close>닫기</button><button class="pill" type="submit">보내기</button></div>
+  </form>
+</dialog>
+
+<dialog class="sheet" id="sponsorSheet" aria-labelledby="sponsorSheetTitle">
+  <form id="sponsorForm" novalidate>
+    <div class="grab" aria-hidden="true"></div>
+    <h2 id="sponsorSheetTitle">한인 업소 협찬 문의</h2>
+    <p class="hint">푸디맵 사용자에게 혜택을 소개하고 싶은 업소라면 남겨 주세요. 운영자가 확인 후 연락드려요.</p>
+    <label class="field"><span>업소명<em>*</em></span><input id="s-name" required maxlength="80" placeholder="예: ○○ 한식당"></label>
+    <label class="field"><span>담당자 연락처 (전화 또는 이메일)<em>*</em></span><input id="s-contact" required maxlength="120" placeholder="604-000-0000 또는 이메일"></label>
+    <label class="field"><span>업소 주소<em>*</em></span><input id="s-addr" required maxlength="160" placeholder="예: 4501 Kingsway, Burnaby"></label>
+    <label class="field"><span>원하는 협찬 혜택과 기간<em>*</em></span><textarea id="s-offer" required maxlength="1500" placeholder="예: 점심 세트 15% 할인, 11월 한 달"></textarea></label>
+    <p class="status" id="sponsorStatus" role="status"></p>
+    <div class="actions"><button class="pill ghost" type="button" data-close>닫기</button><button class="pill" type="submit">보내기</button></div>
+  </form>
+</dialog>
+
 <footer><div class="wrap">
   <span><strong>밴쿠버 푸디맵</strong> – 모기지아재 제공</span>
   <span>딜 정보는 RFD, Reddit, 브랜드 공식 사이트와 뉴스를 AI가 매일 아침 확인해 정리합니다. 매장마다 참여 여부가 다를 수 있으니 주문 전에 앱이나 매장에서 확인하세요.</span>
@@ -247,7 +304,10 @@ img{max-width:100%}
 /* 설정: 구글 폼을 만든 뒤 주소를 넣으세요. 비어 있으면 버튼이 '준비 중'으로 표시됩니다. */
 const CONFIG = {
   dealFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdbuDwgcsDEICoduzc20HiPwvXAJ-77ySrmGffD_vbMfK5mpA/viewform",     // 딜 제보 · 오류 신고 폼
-  dealFormFields: {type:"entry.1072312916", brand:"entry.1475408856", message:"entry.814182761"},  // 미리 채우기용 질문 ID
+  dealFormFields: {type:"entry.1072312916", brand:"entry.1475408856", message:"entry.814182761", link:"entry.999950893"},
+  sponsorFormFields: {name:"entry.1545566945", contact:"entry.1324709792", addr:"entry.994955936", offer:"entry.397185187"},
+  // 구글 폼 '브랜드' 드롭다운의 선택지와 글자가 정확히 같아야 한다
+  formBrands: ["맥도날드","웬디스","A&W","서브웨이","DQ","버거킹","팀홀튼","파파이스","KFC","피자헛","한인 업소","기타"],
   sponsorFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeXzT82kUdoG3UM82hik1EWRuT-NnxPerfvTxm44D41m0mpGA/viewform"   // 협찬 문의 폼
 };
 
@@ -392,19 +452,9 @@ function sponsorCard(s){
     </div>
   </article>`;
 }
-/* 카드의 '정보가 틀렸어요'는 요청 종류·브랜드·대상 딜을 미리 채운 폼을 연다 */
+/* 카드의 '정보가 틀렸어요'는 요청 종류·브랜드·대상 딜을 미리 채운 양식을 연다 */
 function formLink(kind, label, about, brand){
-  const url = kind==="sponsor" ? CONFIG.sponsorFormUrl : CONFIG.dealFormUrl;
-  if (!url) return "";
-  let href = url;
-  if (kind==="deal" && about){
-    const f = CONFIG.dealFormFields, p = new URLSearchParams({usp:"pp_url"});
-    p.set(f.type, "정보 오류 신고");
-    if (brand) p.set(f.brand, brand);
-    p.set(f.message, `${about}\n→ `);
-    href = `${url}?${p}`;
-  }
-  return `<a class="linkbtn" href="${esc(href)}" target="_blank" rel="noopener">${label}</a>`;
+  return `<button type="button" class="linkbtn" data-open="deal" data-type="정보 오류 신고" data-brand-name="${esc(brand||"")}" data-about="${esc(about||"")}">${label}</button>`;
 }
 const emptyBox = msg => `<div class="empty">${msg}</div>`;
 
@@ -473,12 +523,68 @@ function render(){
   renderUpdated();
 }
 
-document.querySelectorAll("[data-form]").forEach(a => {
-  const url = a.dataset.form==="sponsor" ? CONFIG.sponsorFormUrl : CONFIG.dealFormUrl;
-  if (url) a.href = url;
-  else { a.removeAttribute("href"); a.removeAttribute("target"); a.setAttribute("aria-disabled","true"); a.style.opacity=".55"; a.textContent += " (준비 중)"; }
+/* 사이트 안 양식 → 구글 폼으로 전송. 구글 폼은 응답을 돌려주지 않아(no-cors) 네트워크 오류만 실패로 본다 */
+$("d-brand").innerHTML = `<option value="" disabled selected>브랜드 선택</option>` + CONFIG.formBrands.map(b=>`<option>${b}</option>`).join("");
+function openSheet(kind, ctx = {}){
+  const dlg = $(kind==="sponsor" ? "sponsorSheet" : "dealSheet");
+  const form = dlg.querySelector("form");
+  if (form.dataset.sent){ form.innerHTML = form.dataset.original; delete form.dataset.sent; }
+  form.dataset.original = form.dataset.original || form.innerHTML;
+  if (kind==="deal"){
+    const type = ctx.type || "새 딜 제보";
+    form.querySelectorAll('input[name=dtype]').forEach(r => r.checked = r.value===type);
+    $("d-brand").value = CONFIG.formBrands.includes(ctx.brand) ? ctx.brand : (ctx.brand ? "기타" : "");
+    $("d-msg").value = ctx.about ? `${ctx.about}\n→ ` : "";
+    $("d-link").value = "";
+  }
+  form.querySelector(".status").textContent = ""; form.querySelector(".status").className = "status";
+  dlg.showModal();
+  (kind==="deal" && ctx.about ? $("d-msg") : form.querySelector("input:not([type=radio]),select,textarea")).focus();
+}
+async function sendToGoogleForm(url, fields){
+  const body = new URLSearchParams(fields);
+  await fetch(url.replace(/\/viewform.*$/,"/formResponse"), {method:"POST", mode:"no-cors", body});
+}
+function finish(form, title, text){
+  form.dataset.sent = "1";
+  form.innerHTML = `<div class="grab" aria-hidden="true"></div><div class="done"><b>${title}</b><p class="muted" style="margin:0">${text}</p><button class="pill" type="button" data-close>닫기</button></div>`;
+}
+$("dealForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const f = e.target, st = $("dealStatus"), F = CONFIG.dealFormFields;
+  const type = f.querySelector("input[name=dtype]:checked")?.value, brand = $("d-brand").value, msg = $("d-msg").value.trim(), link = $("d-link").value.trim();
+  if (!brand || !msg){ st.className = "status err"; st.textContent = !brand ? "브랜드를 골라 주세요." : "내용을 적어 주세요."; return; }
+  if (link && !/^https?:\/\//i.test(link)){ st.className = "status err"; st.textContent = "링크는 https:// 로 시작해야 해요."; return; }
+  f.querySelector("[type=submit]").disabled = true; st.className = "status"; st.textContent = "보내는 중…";
+  try {
+    await sendToGoogleForm(CONFIG.dealFormUrl, {[F.type]:type, [F.brand]:brand, [F.message]:msg, [F.link]:link});
+    finish(f, "고마워요!", "AI가 다음 날 아침 확인해서 사이트에 반영해요.");
+  } catch(err){
+    f.querySelector("[type=submit]").disabled = false; st.className = "status err";
+    st.innerHTML = `보내지 못했어요. 인터넷 연결을 확인하거나 <a href="${esc(CONFIG.dealFormUrl)}" target="_blank" rel="noopener">구글 폼으로 보내기</a>를 이용해 주세요.`;
+  }
 });
+$("sponsorForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const f = e.target, st = $("sponsorStatus"), F = CONFIG.sponsorFormFields;
+  const v = {name:$("s-name").value.trim(), contact:$("s-contact").value.trim(), addr:$("s-addr").value.trim(), offer:$("s-offer").value.trim()};
+  const missing = [["name","업소명"],["contact","연락처"],["addr","주소"],["offer","협찬 혜택"]].find(([k]) => !v[k]);
+  if (missing){ st.className = "status err"; st.textContent = `${missing[1]}을(를) 적어 주세요.`; return; }
+  f.querySelector("[type=submit]").disabled = true; st.className = "status"; st.textContent = "보내는 중…";
+  try {
+    await sendToGoogleForm(CONFIG.sponsorFormUrl, {[F.name]:v.name, [F.contact]:v.contact, [F.addr]:v.addr, [F.offer]:v.offer});
+    finish(f, "문의를 받았어요", "운영자가 확인하고 남겨 주신 연락처로 연락드릴게요.");
+  } catch(err){
+    f.querySelector("[type=submit]").disabled = false; st.className = "status err";
+    st.innerHTML = `보내지 못했어요. <a href="${esc(CONFIG.sponsorFormUrl)}" target="_blank" rel="noopener">구글 폼으로 보내기</a>를 이용해 주세요.`;
+  }
+});
+document.querySelectorAll("dialog.sheet").forEach(d => d.addEventListener("click", e => {
+  if (e.target === d || e.target.closest("[data-close]")) d.close();
+}));
 document.addEventListener("click", e => {
+  const op = e.target.closest("[data-open]");
+  if (op){ openSheet(op.dataset.open, {type:op.dataset.type, brand:op.dataset.brandName, about:op.dataset.about}); return; }
   const chip = e.target.closest("[data-brand]"); if (chip){ state.brand = chip.dataset.brand; render(); return; }
   const day = e.target.closest("[data-day]"); if (day){ state.selDay = day.dataset.day; render(); }
 });
