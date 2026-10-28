@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "id": "gisasikdang",
+    "name": "기사식당",
+    "cat": "한식 · 단품 메뉴",
+    "sponsored": false,
+    "deal": "제육백반·부산 돼지국밥 스페셜 $9.99, 소주 1병 $9.99",
+    "addr": "2579 Lougheed Hwy, Unit A, Port Coquitlam",
+    "phone": "604-425-1004",
+    "hours": "매일 11:00–24:00 (브레이크 15–16시)",
+    "url": "https://www.instagram.com/gisasikdang.van/",
+    "lat": 49.2652,
+    "lng": -122.7745,
+    "approxLocation": true,
+    "until": "2026-10-31"
+  }
+]
