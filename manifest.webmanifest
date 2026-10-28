@@ -1,0 +1,16 @@
+{
+  "name": "밴쿠버 푸디맵",
+  "short_name": "푸디맵",
+  "description": "밴쿠버 한인을 위한 오늘의 패스트푸드 딜과 한인 맛집",
+  "start_url": "/#today",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F6F1E7",
+  "theme_color": "#F6F1E7",
+  "lang": "ko",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
