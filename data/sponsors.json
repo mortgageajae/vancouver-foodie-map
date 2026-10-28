@@ -13,5 +13,19 @@
     "lng": -122.7745,
     "approxLocation": true,
     "until": "2026-10-31"
+  },
+  {
+    "id": "haan",
+    "name": "한 코리안 BBQ (HAAN)",
+    "cat": "한식 · 코리안 BBQ",
+    "sponsored": false,
+    "deal": "1인 점심 스페셜 B $12 (찌개·비빔밥·감자탕 택1, GST 포함)",
+    "addr": "780-3025 Lougheed Hwy (Sunwood Square), Coquitlam",
+    "phone": "604-944-7188",
+    "hours": "매일 11:30부터",
+    "url": "https://www.haanbbq.com/",
+    "lat": 49.2779,
+    "lng": -122.7933,
+    "approxLocation": true
   }
 ]

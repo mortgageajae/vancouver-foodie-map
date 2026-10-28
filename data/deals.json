@@ -119,5 +119,23 @@
     "title": "$5 맥밸류 세트 (맥더블·주니어치킨·치킨스낵랩 + 스몰 감자튀김·음료, 아침 세트 포함)",
     "url": "https://www.mcdonalds.com/ca/en-ca/newsroom/article/McDonald-s-Canada-Announces-One-Year-Price-Promise-on--5-McValue--Meals-and--1-small-McCaf---Coffee-.html",
     "always": true
+  },
+  {
+    "id": "korean-haan-lunch-special-b-20261027",
+    "brand": "korean",
+    "title": "한 코리안 BBQ 1인 점심 스페셜 B: 순두부·된장찌개·비빔밥·감자탕 중 택1 + 공기밥 + 밑반찬 4종 (GST 포함)",
+    "price": "12",
+    "orig": "",
+    "start": "2026-10-27",
+    "end": "2027-01-31",
+    "how": "매장 점심 · 코퀴틀람 선우드 스퀘어",
+    "code": "",
+    "source": "매장 공지",
+    "url": "https://www.haanbbq.com/",
+    "region": "BC",
+    "needsCheck": true,
+    "always": true,
+    "addedBy": "admin",
+    "checkedAt": "2026-10-28T04:19:38Z"
   }
 ]
