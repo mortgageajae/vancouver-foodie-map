@@ -68,6 +68,23 @@
     "url": "https://www.wendys.com/en-ca"
   },
   {
+    "id": "ubereats-first-order-30-20261027",
+    "brand": "ubereats",
+    "title": "우버이츠 첫 주문 $30 할인 (신규 고객, $40 이상 주문)",
+    "price": "",
+    "orig": "",
+    "start": "2026-10-27",
+    "end": "2026-12-31",
+    "how": "코드 입력 (첫 주문만)",
+    "code": "FIRSTEATS30",
+    "source": "공식 사이트",
+    "url": "https://www.uber.com/ca/en/blog/can-promo-cards",
+    "region": "전국",
+    "needsCheck": false,
+    "addedBy": "ai",
+    "checkedAt": "2026-10-28T04:17:40Z"
+  },
+  {
     "id": "mcd-mccafe-1-coffee-20260113",
     "addedBy": "ai",
     "brand": "mcd",
