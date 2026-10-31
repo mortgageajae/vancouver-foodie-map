@@ -183,6 +183,10 @@ dialog.sheet::backdrop{background:rgba(20,22,31,.5)}
 .seg span{display:block;text-align:center;padding:9px 4px;border:2px solid var(--color-line);border-radius:var(--btn-radius);font-size:14px;background:var(--color-bg);cursor:pointer;-webkit-text-stroke:.3px}
 .seg input:checked+span{background:var(--color-main);border-color:var(--color-main);color:var(--color-on-main)}
 .seg input:focus-visible+span{outline:3px solid var(--color-point);outline-offset:2px}
+.more{border:2px dashed var(--color-line);border-radius:8px;padding:10px 12px}
+.more summary{cursor:pointer;font-size:14px;color:var(--color-main);-webkit-text-stroke:.3px}
+.moregrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+.moregrid .full{grid-column:1/-1}
 .sheet .actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
 .sheet .status{font-size:14px;margin:0;min-height:1.2em}
 .sheet .status.ok{color:var(--color-main)}.sheet .status.err{color:var(--color-alert)}
@@ -292,8 +296,19 @@ img{max-width:100%}
         <label><input type="radio" name="dtype" value="끝난 딜 신고"><span>끝난 딜</span></label>
       </div></div>
     <label class="field"><span>브랜드<em>*</em></span><select id="d-brand" required></select></label>
-    <label class="field"><span>내용<em>*</em></span><textarea id="d-msg" required maxlength="1500" placeholder="예: A&W 앱에 틴버거 콤보 $8.99 쿠폰이 11월 10일까지 있어요."></textarea></label>
-    <label class="field"><span>참고 링크 (선택)</span><input id="d-link" type="url" inputmode="url" placeholder="https://"></label>
+    <label class="field"><span>내용<em>*</em></span><textarea id="d-msg" required maxlength="1500" placeholder="예: A&W 앱에 틴버거 콤보 쿠폰이 있어요."></textarea></label>
+    <details class="more" id="d-more">
+      <summary>자세히 적기 (선택) · 적어 주시면 더 빨리 반영돼요</summary>
+      <div class="moregrid">
+        <label class="field"><span>가게 이름 / 지점</span><input id="d-place" maxlength="80" placeholder="예: 버나비 메트로타운점"></label>
+        <label class="field"><span>딜 가격</span><input id="d-price" maxlength="40" inputmode="decimal" placeholder="예: $8.99"></label>
+        <label class="field"><span>시작일</span><input id="d-start" type="date"></label>
+        <label class="field"><span>종료일</span><input id="d-end" type="date"></label>
+        <label class="field full"><span>사용 방법</span><select id="d-how"><option value="">선택 안 함</option><option>앱 쿠폰</option><option>매장 주문</option><option>코드 입력</option><option>배달앱 주문</option><option>회원 전용</option><option>기타</option></select></label>
+        <label class="field full"><span>코드 (있으면)</span><input id="d-code" maxlength="40" placeholder="예: SAVE10"></label>
+      </div>
+    </details>
+    <label class="field"><span>참고 링크 (선택)</span><input id="d-link" type="url" inputmode="url" placeholder="인스타그램·공식 사이트 링크 https://"></label>
     <p class="status" id="dealStatus" role="status"></p>
     <div class="actions"><button class="pill ghost" type="button" data-close>닫기</button><button class="pill" type="submit">보내기</button></div>
   </form>
@@ -584,6 +599,8 @@ function openSheet(kind, ctx = {}){
     $("d-brand").value = CONFIG.formBrands.includes(ctx.brand) ? ctx.brand : (ctx.brand ? "기타" : "");
     $("d-msg").value = ctx.about ? `${ctx.about}\n→ ` : "";
     $("d-link").value = "";
+    ["d-place","d-price","d-start","d-end","d-how","d-code"].forEach(id => $(id).value = "");
+    $("d-more").open = false;
   }
   form.querySelector(".status").textContent = ""; form.querySelector(".status").className = "status";
   dlg.showModal();
@@ -600,8 +617,13 @@ function finish(form, title, text){
 $("dealForm").addEventListener("submit", async e => {
   e.preventDefault();
   const f = e.target, st = $("dealStatus"), F = CONFIG.dealFormFields;
-  const type = f.querySelector("input[name=dtype]:checked")?.value, brand = $("d-brand").value, msg = $("d-msg").value.trim(), link = $("d-link").value.trim();
-  if (!brand || !msg){ st.className = "status err"; st.textContent = !brand ? "브랜드를 골라 주세요." : "내용을 적어 주세요."; return; }
+  const type = f.querySelector("input[name=dtype]:checked")?.value, brand = $("d-brand").value, link = $("d-link").value.trim();
+  // 선택 항목은 구글 폼을 고치지 않고 '내용' 아래에 정리해서 함께 보낸다
+  const extra = [["가게/지점","d-place"],["가격","d-price"],["시작일","d-start"],["종료일","d-end"],["사용 방법","d-how"],["코드","d-code"]]
+    .map(([k,id]) => [k, $(id).value.trim()]).filter(([,v]) => v).map(([k,v]) => `${k}: ${v}`);
+  const msg = $("d-msg").value.trim() + (extra.length ? "\n\n[상세]\n" + extra.join("\n") : "");
+  if (!brand || !$("d-msg").value.trim()){ st.className = "status err"; st.textContent = !brand ? "브랜드를 골라 주세요." : "내용을 적어 주세요."; return; }
+  if ($("d-start").value && $("d-end").value && $("d-end").value < $("d-start").value){ st.className = "status err"; st.textContent = "종료일이 시작일보다 빨라요."; return; }
   if (link && !/^https?:\/\//i.test(link)){ st.className = "status err"; st.textContent = "링크는 https:// 로 시작해야 해요."; return; }
   f.querySelector("[type=submit]").disabled = true; st.className = "status"; st.textContent = "보내는 중…";
   try {
