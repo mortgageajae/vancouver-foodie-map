@@ -187,6 +187,23 @@
     "checkedAt": "2026-10-31T12:51:10Z"
   },
   {
+    "id": "korean-gisasikdang-november-specials-20261101",
+    "brand": "korean",
+    "title": "기사식당 11월 스페셜: 감자탕·김치찌개·오징어볶음·소주(전 종류) 각 $14.99 (매일 종일)",
+    "price": "14.99",
+    "orig": "",
+    "start": "2026-11-01",
+    "end": "2026-11-30",
+    "how": "매장 식사 · 포트코퀴틀람",
+    "code": "",
+    "source": "매장 공지",
+    "url": "https://www.instagram.com/p/DfI8UCJBpxu/",
+    "region": "BC",
+    "needsCheck": false,
+    "addedBy": "ai",
+    "checkedAt": "2026-10-31T18:36:19Z"
+  },
+  {
     "id": "ubereats-first-order-30-20261027",
     "brand": "ubereats",
     "title": "우버이츠 첫 주문 $30 할인 (신규 고객, $40 이상 주문)",
