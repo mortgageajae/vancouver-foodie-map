@@ -464,7 +464,11 @@ $("gpsBtn").addEventListener("click", () => {
   }, {enableHighAccuracy:false, timeout:10000, maximumAge:300000});
 });
 
-document.querySelectorAll("nav.tabbar button").forEach(b => b.addEventListener("click", () => setView(b.dataset.view)));
+// 탭을 바꾸면 새 화면을 맨 위부터 보여 준다 (이전 탭에서 내려간 위치가 남지 않게)
+document.querySelectorAll("nav.tabbar button").forEach(b => b.addEventListener("click", () => {
+  setView(b.dataset.view);
+  window.scrollTo({top:0, behavior:"instant"});
+}));
 function setView(v){
   state.view = v;
   document.querySelectorAll("nav.tabbar button").forEach(b => b.setAttribute("aria-selected", b.dataset.view===v));
