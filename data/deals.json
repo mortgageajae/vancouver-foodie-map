@@ -34,6 +34,23 @@
     "checkedAt": "2026-10-28T04:10:00Z"
   },
   {
+    "id": "dominos-skip-30-off-20260921",
+    "brand": "dominos",
+    "title": "스킵에서 도미노 첫 3회 주문 30% 할인",
+    "price": "",
+    "orig": "",
+    "start": "2026-09-21",
+    "end": "2026-11-01",
+    "how": "스킵 주문 · 코드 입력",
+    "code": "DOMINOS30",
+    "source": "뉴스",
+    "url": "https://vitamagazine.com/2026/09/23/dominos-is-now-on-skip-and-theres-a-very-cheesy-deal-to-celebrate-win/",
+    "region": "전국",
+    "needsCheck": false,
+    "addedBy": "ai",
+    "checkedAt": "2026-10-31T02:56:57Z"
+  },
+  {
     "id": "subway-bogo-footlong-20261027",
     "addedBy": "ai",
     "brand": "subway",
