@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>밴쿠버 푸디맵</title>
-<meta name="description" content="밴쿠버 한인을 위한 오늘의 패스트푸드 딜, 딜 캘린더, 내 주변 매장 찾기와 한인 맛집 협찬 딜. 매일 아침 업데이트.">
+<meta name="description" content="밴쿠버 한인을 위한 오늘의 패스트푸드 딜, 딜 캘린더, 내 주변 매장 찾기와 한인 맛집 딜. 매일 아침 업데이트.">
 <meta property="og:title" content="밴쿠버 푸디맵 – Vancouver Foodie Map">
 <meta property="og:description" content="맥도날드·웬디스·A&W·서브웨이·DQ·버거킹 오늘의 딜을 한눈에. 매일 아침 업데이트.">
 <meta property="og:type" content="website">
@@ -153,8 +153,18 @@ dialog h2{font-size:22px}
 footer{border-top:2px solid var(--color-line)}
 footer .wrap{padding-block:16px calc(96px + env(safe-area-inset-bottom,0px));font-size:13.5px;color:var(--color-text-muted);display:flex;flex-direction:column;gap:4px}
 footer strong{color:var(--color-text);font-weight:400;-webkit-text-stroke:var(--text-stroke-ui)}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brandmark{flex:none;display:block;border-radius:50%;transition:transform .15s}
+.brandmark:hover{transform:rotate(-6deg) scale(1.05)}
+.brandmark img{display:block;width:48px;height:48px}
+.maker{display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:center;background:var(--color-surface);border:2px solid var(--color-line);border-radius:var(--card-radius);padding:14px 16px;margin-bottom:10px;text-decoration:none;color:var(--color-text);transition:transform .15s,border-color .15s}
+.maker:hover{border-color:var(--color-main);transform:translateY(-2px)}
+.maker img{width:72px;height:72px;display:block}
+.maker b{display:block;font-family:var(--font-display);font-weight:400;font-size:18px;line-height:1.3;margin-bottom:3px}
+.maker span span{display:block;font-size:13.5px;color:var(--color-text-muted);line-height:1.5}
+.maker em{display:inline-block;margin-top:6px;font-style:normal;font-size:13.5px;color:var(--color-main);-webkit-text-stroke:var(--text-stroke-ui)}
 
-/* 제보 · 협찬 양식 (아래에서 올라오는 시트) */
+/* 제보 · 홍보 신청 양식 (아래에서 올라오는 시트) */
 dialog.sheet{border:0;padding:0;margin:auto auto 0;width:100%;max-width:520px;max-height:92dvh;border-radius:16px 16px 0 0;background:var(--color-surface);color:var(--color-text)}
 dialog.sheet::backdrop{background:rgba(20,22,31,.5)}
 .sheet form{display:flex;flex-direction:column;gap:14px;padding:18px max(18px,env(safe-area-inset-left,0px)) calc(18px + env(safe-area-inset-bottom,0px))}
@@ -209,7 +219,10 @@ img{max-width:100%}
 <header>
   <div class="wrap">
     <div class="brandrow">
-      <h1 class="logo-name"><span>밴쿠버 푸디맵</span><small class="logo-sub">Vancouver Foodie Map · 오늘의 패스트푸드 딜 &amp; 한인 맛집</small></h1>
+      <div class="titlerow">
+        <h1 class="logo-name"><span>밴쿠버 푸디맵</span><small class="logo-sub">Vancouver Foodie Map · by 모기지아재</small></h1>
+        <a class="brandmark" href="https://mortgageajae.ca" target="_blank" rel="noopener" aria-label="모기지아재 홈페이지"><img src="/img/mortgageajae-circle-96.png" srcset="/img/mortgageajae-circle-96.png 1x, /img/mortgageajae-circle-192.png 2x" width="48" height="48" alt="모기지아재 로고"></a>
+      </div>
       <div class="locrow">
         <button class="pill ghost gps" id="gpsBtn" type="button">📍 내 위치</button>
         <label class="area" for="area"><select id="area" aria-label="동네 선택"></select></label>
@@ -256,7 +269,7 @@ img{max-width:100%}
     <p><strong>못 본 딜이 있나요?</strong>제보해 주시면 AI가 확인해서 다음 날 아침 업데이트 때 올려요.</p>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       <button class="pill yellow" type="button" data-open="deal">딜 제보 · 오류 신고</button>
-      <button class="pill ghost" type="button" data-open="sponsor" style="color:var(--color-on-main);border-color:var(--color-on-main)">협찬 문의</button>
+      <button class="pill ghost" type="button" data-open="sponsor" style="color:var(--color-on-main);border-color:var(--color-on-main)">우리 가게 홍보하기</button>
     </div>
   </div>
 </div></main>
@@ -289,19 +302,24 @@ img{max-width:100%}
 <dialog class="sheet" id="sponsorSheet" aria-labelledby="sponsorSheetTitle">
   <form id="sponsorForm" novalidate>
     <div class="grab" aria-hidden="true"></div>
-    <h2 id="sponsorSheetTitle">한인 업소 협찬 문의</h2>
-    <p class="hint">푸디맵 사용자에게 혜택을 소개하고 싶은 업소라면 남겨 주세요. 운영자가 확인 후 연락드려요.</p>
+    <h2 id="sponsorSheetTitle">한인 업소 무료 홍보 신청</h2>
+    <p class="hint">푸디맵 사용자에게 소개하고 싶은 한인 업소의 혜택을 남겨 주세요. 홍보는 무료이고, 운영자가 확인 후 연락드려요.</p>
     <label class="field"><span>업소명<em>*</em></span><input id="s-name" required maxlength="80" placeholder="예: ○○ 한식당"></label>
     <label class="field"><span>담당자 연락처 (전화 또는 이메일)<em>*</em></span><input id="s-contact" required maxlength="120" placeholder="604-000-0000 또는 이메일"></label>
     <label class="field"><span>업소 주소<em>*</em></span><input id="s-addr" required maxlength="160" placeholder="예: 4501 Kingsway, Burnaby"></label>
-    <label class="field"><span>원하는 협찬 혜택과 기간<em>*</em></span><textarea id="s-offer" required maxlength="1500" placeholder="예: 점심 세트 15% 할인, 11월 한 달"></textarea></label>
+    <label class="field"><span>소개하고 싶은 혜택과 기간<em>*</em></span><textarea id="s-offer" required maxlength="1500" placeholder="예: 점심 세트 15% 할인, 11월 한 달"></textarea></label>
     <p class="status" id="sponsorStatus" role="status"></p>
     <div class="actions"><button class="pill ghost" type="button" data-close>닫기</button><button class="pill" type="submit">보내기</button></div>
   </form>
 </dialog>
 
 <footer><div class="wrap">
-  <span><strong>밴쿠버 푸디맵</strong> – 모기지아재 제공</span>
+  <a class="maker" href="https://mortgageajae.ca" target="_blank" rel="noopener">
+    <img src="/img/mortgageajae-circle-192.png" width="72" height="72" alt="모기지아재 로고" loading="lazy">
+    <span><b>밴쿠버 푸디맵은 모기지아재가 만들어요</b>
+      <span>밴쿠버 한인 이웃을 위해 수익 없이 운영하는 무료 서비스예요. 캐나다 모기지가 궁금하면 모기지아재를 찾아 주세요.</span>
+      <em>mortgageajae.ca →</em></span>
+  </a>
   <span>딜 정보는 RFD, Reddit, 브랜드 공식 사이트와 뉴스를 AI가 매일 아침 확인해 정리합니다. 매장마다 참여 여부가 다를 수 있으니 주문 전에 앱이나 매장에서 확인하세요.</span>
   <span>배달앱(우버이츠·도어대시·스킵) 딜은 공개된 프로모션만 모았어요. 내 주소의 식당별 할인은 각 앱에서 확인하세요.</span>
   <span class="privacy">위치 정보는 가까운 매장 거리를 계산하는 데 이 기기 안에서만 쓰이고, 어디에도 전송하거나 저장하지 않습니다.</span>
@@ -314,7 +332,7 @@ const CONFIG = {
   sponsorFormFields: {name:"entry.1545566945", contact:"entry.1324709792", addr:"entry.994955936", offer:"entry.397185187"},
   // 구글 폼 '브랜드' 드롭다운의 선택지와 글자가 정확히 같아야 한다
   formBrands: ["맥도날드","웬디스","A&W","서브웨이","DQ","버거킹","팀홀튼","파파이스","KFC","피자헛","한인 업소","기타"],
-  sponsorFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeXzT82kUdoG3UM82hik1EWRuT-NnxPerfvTxm44D41m0mpGA/viewform"   // 협찬 문의 폼
+  sponsorFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeXzT82kUdoG3UM82hik1EWRuT-NnxPerfvTxm44D41m0mpGA/viewform"   // 한인 업소 홍보 신청 폼
 };
 
 const BRANDS = {
@@ -473,11 +491,11 @@ function sponsorCard(s){
   const h = here(), dist = (s.lat && s.lng) ? km(h.lat,h.lng,+s.lat,+s.lng) : null;
   const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent((s.name||"")+" "+(s.addr||""))}`;
   return `<article class="coupon">
-    <div class="stub"><b style="font-size:19px">${s.sponsored===false?"한식":"협찬"}</b>${dist!=null?`<span class="dist">${s.approxLocation?"약 ":""}${dist.toFixed(1)}km</span>`:""}${s.until?`<em>~${fmtDate(s.until)}</em>`:""}</div>
+    <div class="stub"><b style="font-size:19px">한식</b>${dist!=null?`<span class="dist">${s.approxLocation?"약 ":""}${dist.toFixed(1)}km</span>`:""}${s.until?`<em>~${fmtDate(s.until)}</em>`:""}</div>
     <div class="cbody">
-      <div class="ctop">${s.sponsored===false?"":`<span class="tag partner">파트너</span>`}${s.cat?`<span class="muted">${esc(s.cat)}</span>`:""}</div>
+      <div class="ctop">${s.cat?`<span class="muted">${esc(s.cat)}</span>`:""}</div>
       <h3>${esc(s.name)} · ${esc(s.deal)}</h3>
-      <div class="meta">${s.addr?`<span>${esc(s.addr)}</span>`:""}${s.phone?`<span>${esc(s.phone)}</span>`:""}${s.hours?`<span>${esc(s.hours)}</span>`:""}${safeUrl(s.url)?`<a href="${esc(s.url)}" target="_blank" rel="noopener">인스타그램</a>`:""}<a href="${maps}" target="_blank" rel="noopener">지도 열기</a>
+      <div class="meta">${s.addr?`<span>${esc(s.addr)}</span>`:""}${s.phone?`<span>${esc(s.phone)}</span>`:""}${s.hours?`<span>${esc(s.hours)}</span>`:""}${safeUrl(s.url)?`<a href="${esc(s.url)}" target="_blank" rel="noopener">${/instagram\.com/i.test(s.url)?"인스타그램":"홈페이지"}</a>`:""}<a href="${maps}" target="_blank" rel="noopener">지도 열기</a>
         ${formLink("deal",`정보가 틀렸어요`,`[한인 업소] ${s.name}`, "한인 업소")}</div>
     </div>
   </article>`;
@@ -546,7 +564,7 @@ function renderKorean(){
   const list = state.sponsors.filter(s => !s.until || s.until >= todayStr)
     .map(s=>({s,d:(s.lat&&s.lng)?km(h.lat,h.lng,+s.lat,+s.lng):1e9})).sort((x,y)=>x.d-y.d);
   $("sponsorList").innerHTML = list.length ? list.map(x=>sponsorCard(x.s)).join("") :
-    emptyBox("지금 진행 중인 한인 업소 딜이 없어요. 업소라면 아래 ‘협찬 문의’로 신청할 수 있어요.");
+    emptyBox("지금 진행 중인 한인 업소 딜이 없어요. 업소라면 아래 ‘우리 가게 홍보하기’로 무료로 신청할 수 있어요.");
 }
 function render(){
   ({today:renderToday,calendar:renderCalendar,nearby:renderNearby,korean:renderKorean})[state.view]();
@@ -598,12 +616,12 @@ $("sponsorForm").addEventListener("submit", async e => {
   e.preventDefault();
   const f = e.target, st = $("sponsorStatus"), F = CONFIG.sponsorFormFields;
   const v = {name:$("s-name").value.trim(), contact:$("s-contact").value.trim(), addr:$("s-addr").value.trim(), offer:$("s-offer").value.trim()};
-  const missing = [["name","업소명"],["contact","연락처"],["addr","주소"],["offer","협찬 혜택"]].find(([k]) => !v[k]);
+  const missing = [["name","업소명"],["contact","연락처"],["addr","주소"],["offer","혜택"]].find(([k]) => !v[k]);
   if (missing){ st.className = "status err"; st.textContent = `${missing[1]}을(를) 적어 주세요.`; return; }
   f.querySelector("[type=submit]").disabled = true; st.className = "status"; st.textContent = "보내는 중…";
   try {
     await sendToGoogleForm(CONFIG.sponsorFormUrl, {[F.name]:v.name, [F.contact]:v.contact, [F.addr]:v.addr, [F.offer]:v.offer});
-    finish(f, "문의를 받았어요", "운영자가 확인하고 남겨 주신 연락처로 연락드릴게요.");
+    finish(f, "신청을 받았어요", "운영자가 확인하고 남겨 주신 연락처로 연락드릴게요.");
   } catch(err){
     f.querySelector("[type=submit]").disabled = false; st.className = "status err";
     st.innerHTML = `보내지 못했어요. <a href="${esc(CONFIG.sponsorFormUrl)}" target="_blank" rel="noopener">구글 폼으로 보내기</a>를 이용해 주세요.`;
