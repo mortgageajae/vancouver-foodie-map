@@ -85,6 +85,24 @@
     "checkedAt": "2026-10-28T04:17:40Z"
   },
   {
+    "id": "bk-whopper-wednesday-20261031",
+    "brand": "bk",
+    "title": "와퍼 웬즈데이: 매주 수요일 와퍼 할인 (가격은 매장마다 다름)",
+    "price": "",
+    "orig": "",
+    "start": "2026-10-31",
+    "end": "2026-12-31",
+    "how": "매장·앱 주문 (수요일만)",
+    "code": "",
+    "source": "공식 앱",
+    "url": "https://www.facebook.com/BurgerKingCanada/posts/get-a-whopper-meal-for-899-every-wednesday-at-burger-king-thats-your-midweek-pla/1424872843186218/",
+    "region": "전국",
+    "needsCheck": true,
+    "always": true,
+    "addedBy": "ai",
+    "checkedAt": "2026-10-31T02:31:03Z"
+  },
+  {
     "id": "mcd-mccafe-1-coffee-20260113",
     "addedBy": "ai",
     "brand": "mcd",
