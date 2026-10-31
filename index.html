@@ -306,6 +306,7 @@ img{max-width:100%}
         <label class="field"><span>종료일</span><input id="d-end" type="date"></label>
         <label class="field full"><span>사용 방법</span><select id="d-how"><option value="">선택 안 함</option><option>앱 쿠폰</option><option>매장 주문</option><option>코드 입력</option><option>배달앱 주문</option><option>회원 전용</option><option>기타</option></select></label>
         <label class="field full"><span>코드 (있으면)</span><input id="d-code" maxlength="40" placeholder="예: SAVE10"></label>
+        <label class="field full"><span>가게 인스타그램 아이디</span><input id="d-ig" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="예: @jimococafe"></label>
       </div>
     </details>
     <label class="field"><span>참고 링크 (선택)</span><input id="d-link" type="url" inputmode="url" placeholder="인스타그램·공식 사이트 링크 https://"></label>
@@ -322,6 +323,7 @@ img{max-width:100%}
     <label class="field"><span>업소명<em>*</em></span><input id="s-name" required maxlength="80" placeholder="예: ○○ 한식당"></label>
     <label class="field"><span>담당자 연락처 (전화 또는 이메일)<em>*</em></span><input id="s-contact" required maxlength="120" placeholder="604-000-0000 또는 이메일"></label>
     <label class="field"><span>업소 주소<em>*</em></span><input id="s-addr" required maxlength="160" placeholder="예: 4501 Kingsway, Burnaby"></label>
+    <label class="field"><span>가게 인스타그램 아이디 (선택)</span><input id="s-ig" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="예: @mystore.van · 새 딜을 자동으로 소개해 드려요"></label>
     <label class="field"><span>소개하고 싶은 혜택과 기간<em>*</em></span><textarea id="s-offer" required maxlength="1500" placeholder="예: 점심 세트 15% 할인, 11월 한 달"></textarea></label>
     <p class="status" id="sponsorStatus" role="status"></p>
     <div class="actions"><button class="pill ghost" type="button" data-close>닫기</button><button class="pill" type="submit">보내기</button></div>
@@ -599,12 +601,18 @@ function openSheet(kind, ctx = {}){
     $("d-brand").value = CONFIG.formBrands.includes(ctx.brand) ? ctx.brand : (ctx.brand ? "기타" : "");
     $("d-msg").value = ctx.about ? `${ctx.about}\n→ ` : "";
     $("d-link").value = "";
-    ["d-place","d-price","d-start","d-end","d-how","d-code"].forEach(id => $(id).value = "");
+    ["d-place","d-price","d-start","d-end","d-how","d-code","d-ig"].forEach(id => $(id).value = "");
     $("d-more").open = false;
   }
   form.querySelector(".status").textContent = ""; form.querySelector(".status").className = "status";
   dlg.showModal();
   (kind==="deal" && ctx.about ? $("d-msg") : form.querySelector("input:not([type=radio]),select,textarea")).focus();
+}
+/* "@아이디", 아이디, instagram.com/아이디 주소 모두 "@아이디" 하나로 맞춘다 */
+function igHandle(raw){
+  const t = String(raw||"").trim();
+  const m = t.match(/instagram\.com\/@?([A-Za-z0-9._]{1,30})/i) || t.match(/^@?([A-Za-z0-9._]{1,30})$/);
+  return m ? "@" + m[1].replace(/\.$/,"") : "";
 }
 async function sendToGoogleForm(url, fields){
   const body = new URLSearchParams(fields);
@@ -619,8 +627,8 @@ $("dealForm").addEventListener("submit", async e => {
   const f = e.target, st = $("dealStatus"), F = CONFIG.dealFormFields;
   const type = f.querySelector("input[name=dtype]:checked")?.value, brand = $("d-brand").value, link = $("d-link").value.trim();
   // 선택 항목은 구글 폼을 고치지 않고 '내용' 아래에 정리해서 함께 보낸다
-  const extra = [["가게/지점","d-place"],["가격","d-price"],["시작일","d-start"],["종료일","d-end"],["사용 방법","d-how"],["코드","d-code"]]
-    .map(([k,id]) => [k, $(id).value.trim()]).filter(([,v]) => v).map(([k,v]) => `${k}: ${v}`);
+  const extra = [["가게/지점","d-place"],["가격","d-price"],["시작일","d-start"],["종료일","d-end"],["사용 방법","d-how"],["코드","d-code"],["인스타","d-ig"]]
+    .map(([k,id]) => [k, id==="d-ig" ? igHandle($(id).value) : $(id).value.trim()]).filter(([,v]) => v).map(([k,v]) => `${k}: ${v}`);
   const msg = $("d-msg").value.trim() + (extra.length ? "\n\n[상세]\n" + extra.join("\n") : "");
   if (!brand || !$("d-msg").value.trim()){ st.className = "status err"; st.textContent = !brand ? "브랜드를 골라 주세요." : "내용을 적어 주세요."; return; }
   if ($("d-start").value && $("d-end").value && $("d-end").value < $("d-start").value){ st.className = "status err"; st.textContent = "종료일이 시작일보다 빨라요."; return; }
@@ -638,11 +646,12 @@ $("sponsorForm").addEventListener("submit", async e => {
   e.preventDefault();
   const f = e.target, st = $("sponsorStatus"), F = CONFIG.sponsorFormFields;
   const v = {name:$("s-name").value.trim(), contact:$("s-contact").value.trim(), addr:$("s-addr").value.trim(), offer:$("s-offer").value.trim()};
+  const ig = igHandle($("s-ig").value);
   const missing = [["name","업소명"],["contact","연락처"],["addr","주소"],["offer","혜택"]].find(([k]) => !v[k]);
   if (missing){ st.className = "status err"; st.textContent = `${missing[1]}을(를) 적어 주세요.`; return; }
   f.querySelector("[type=submit]").disabled = true; st.className = "status"; st.textContent = "보내는 중…";
   try {
-    await sendToGoogleForm(CONFIG.sponsorFormUrl, {[F.name]:v.name, [F.contact]:v.contact, [F.addr]:v.addr, [F.offer]:v.offer});
+    await sendToGoogleForm(CONFIG.sponsorFormUrl, {[F.name]:v.name, [F.contact]:v.contact, [F.addr]:v.addr, [F.offer]:v.offer + (ig ? `\n\n인스타: ${ig}` : "")});
     finish(f, "신청을 받았어요", "운영자가 확인하고 남겨 주신 연락처로 연락드릴게요.");
   } catch(err){
     f.querySelector("[type=submit]").disabled = false; st.className = "status err";
