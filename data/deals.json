@@ -48,7 +48,7 @@
     "region": "전국",
     "needsCheck": false,
     "addedBy": "ai",
-    "checkedAt": "2026-10-31T02:56:57Z"
+    "checkedAt": "2026-10-31T12:51:10Z"
   },
   {
     "id": "subway-bogo-footlong-20261027",
@@ -82,7 +82,7 @@
     "region": "전국",
     "needsCheck": false,
     "addedBy": "ai",
-    "checkedAt": "2026-10-31T03:01:17Z"
+    "checkedAt": "2026-10-31T12:51:10Z"
   },
   {
     "id": "jollibee-bogo-chicken-sandwich-20261109",
@@ -99,7 +99,7 @@
     "region": "전국",
     "needsCheck": false,
     "addedBy": "ai",
-    "checkedAt": "2026-10-31T03:01:17Z"
+    "checkedAt": "2026-10-31T12:51:10Z"
   },
   {
     "id": "pizzahut-second-pizza-1-20261026",
@@ -116,13 +116,13 @@
     "region": "전국",
     "needsCheck": false,
     "addedBy": "ai",
-    "checkedAt": "2026-10-31T02:36:13Z"
+    "checkedAt": "2026-10-31T12:51:10Z"
   },
   {
     "id": "wendys-canadian-meal-deal-899-20261027",
     "addedBy": "ai",
     "brand": "wendys",
-    "checkedAt": "2026-10-31T02:36:13Z",
+    "checkedAt": "2026-10-31T12:51:10Z",
     "code": "",
     "end": "2026-11-15",
     "how": "매장·앱 주문",
@@ -134,6 +134,23 @@
     "start": "2026-10-27",
     "title": "캐나디안 밀 딜: 쿼터파운드 버거 + 감자튀김 + 프로스티 + 음료",
     "url": "https://www.wendys.com/en-ca"
+  },
+  {
+    "id": "chipotle-brisket-free-delivery-20261105",
+    "brand": "chipotle",
+    "title": "스모크드 브리스킷 주문 시 배달비 $0 (치폴레 공식 앱·웹)",
+    "price": "",
+    "orig": "",
+    "start": "2026-11-05",
+    "end": "2026-11-18",
+    "how": "공식 앱/웹 배달 주문",
+    "code": "",
+    "source": "공식 사이트",
+    "url": "https://newsroom.chipotle.com/2026-10-26-CHIPOTLE-TO-BRING-BACK-MESQUITE-SMOKED-BRISKET-FOR-THE-HEART-OF-FOOTBALL-SEASON",
+    "region": "전국",
+    "needsCheck": false,
+    "addedBy": "ai",
+    "checkedAt": "2026-10-31T12:51:10Z"
   },
   {
     "id": "jollibee-10pc-bucket-35-20261123",
@@ -150,7 +167,7 @@
     "region": "전국",
     "needsCheck": false,
     "addedBy": "ai",
-    "checkedAt": "2026-10-31T03:01:17Z"
+    "checkedAt": "2026-10-31T12:51:10Z"
   },
   {
     "id": "ubereats-first-order-30-20261027",
