@@ -1,0 +1,7 @@
+{
+  "note": "매일 아침 업데이트가 인스타그램 Business Discovery API로 최근 게시물을 확인하는 한인 업소 계정 목록. 계정은 비즈니스/크리에이터 계정이어야 읽힌다.",
+  "accounts": [
+    {"username": "jimococafe", "name": "지모코 카페 앤 파스타", "placeId": "jimoco-austin"},
+    {"username": "gisasikdang.van", "name": "기사식당", "placeId": "gisasikdang"}
+  ]
+}
