@@ -427,6 +427,9 @@ const AREAS = [
   ["northvan","노스밴쿠버",49.3200,-123.0724]
 ];
 const VIEWS = ["today","calendar","nearby","korean"];
+/* 홈 화면 아이콘으로 열면 주소를 /app 으로 맞춘다: 방문 통계에서 '홈 화면 앱 실행'을 따로 셀 수 있게 */
+const STANDALONE = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+if (STANDALONE && location.pathname !== "/app") location.replace("/app" + location.hash);
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const ymd = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
