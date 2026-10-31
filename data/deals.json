@@ -274,5 +274,23 @@
     "always": true,
     "addedBy": "admin",
     "checkedAt": "2026-10-28T04:19:38Z"
+  },
+  {
+    "id": "korean-jimoco-lunch-for-two-20261026",
+    "brand": "korean",
+    "title": "지모코 카페 앤 파스타 2인 점심: 파스타 2개 + 미니 카프레제·샐러드·미트볼 (월~목 11~15시, 매장 식사)",
+    "price": "42.40",
+    "orig": "53",
+    "start": "2026-10-26",
+    "end": "2027-01-31",
+    "how": "매장 식사 · 코퀴틀람 Austin점만",
+    "code": "",
+    "source": "매장 공지",
+    "url": "https://www.instagram.com/jimococafe/",
+    "region": "BC",
+    "needsCheck": true,
+    "always": true,
+    "addedBy": "admin",
+    "checkedAt": "2026-10-31T18:02:42Z"
   }
 ]

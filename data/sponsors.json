@@ -27,5 +27,18 @@
     "lat": 49.2779,
     "lng": -122.7933,
     "approxLocation": true
+  },
+  {
+    "id": "jimoco-austin",
+    "name": "지모코 카페 앤 파스타 (Jimoco)",
+    "cat": "이탈리안 파스타 · 한인 업소",
+    "sponsored": false,
+    "deal": "2인 점심 $42.40 (정가 $53, 월~목 11~15시, 매장 식사)",
+    "addr": "1046A Austin Ave, Coquitlam",
+    "hours": "점심 스페셜 월~목 11:00–15:00",
+    "url": "https://www.instagram.com/jimococafe/",
+    "lat": 49.2509,
+    "lng": -122.8712,
+    "approxLocation": true
   }
 ]
