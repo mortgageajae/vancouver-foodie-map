@@ -65,13 +65,13 @@
     "region": "전국",
     "needsCheck": false,
     "addedBy": "ai",
-    "checkedAt": "2026-10-31T12:51:10Z"
+    "checkedAt": "2026-11-01T12:52:27Z"
   },
   {
     "id": "subway-bogo-footlong-20261027",
     "addedBy": "ai",
     "brand": "subway",
-    "checkedAt": "2026-10-28T03:01:41Z",
+    "checkedAt": "2026-11-01T12:52:27Z",
     "code": "",
     "end": "2026-11-03",
     "how": "온라인·앱 주문",
@@ -100,6 +100,40 @@
     "needsCheck": false,
     "addedBy": "ai",
     "checkedAt": "2026-10-31T12:51:10Z"
+  },
+  {
+    "id": "subway-powerbowl-20off-20261101",
+    "brand": "subway",
+    "title": "파워볼 20% 할인 (코드 입력)",
+    "price": "",
+    "orig": "",
+    "start": "2026-11-01",
+    "end": "2026-11-08",
+    "how": "코드 입력 (앱·온라인 주문)",
+    "code": "20OFFBOWL",
+    "source": "공식 사이트",
+    "url": "https://www.subway.com/en-ca/home",
+    "region": "전국",
+    "needsCheck": true,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-01T12:52:27Z"
+  },
+  {
+    "id": "subway-snackwich-potato-rings-5-20261101",
+    "brand": "subway",
+    "title": "스낵위치 + 포테이토 링 $5",
+    "price": "5",
+    "orig": "",
+    "start": "2026-11-01",
+    "end": "2026-11-08",
+    "how": "코드 입력 (앱·온라인 주문)",
+    "code": "SNACKRING",
+    "source": "공식 사이트",
+    "url": "https://www.subway.com/en-ca/home",
+    "region": "전국",
+    "needsCheck": true,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-01T12:52:27Z"
   },
   {
     "id": "jollibee-bogo-chicken-sandwich-20261109",
@@ -133,13 +167,13 @@
     "region": "전국",
     "needsCheck": false,
     "addedBy": "ai",
-    "checkedAt": "2026-10-31T12:51:10Z"
+    "checkedAt": "2026-11-01T12:52:27Z"
   },
   {
     "id": "wendys-canadian-meal-deal-899-20261027",
     "addedBy": "ai",
     "brand": "wendys",
-    "checkedAt": "2026-10-31T12:51:10Z",
+    "checkedAt": "2026-11-01T12:52:27Z",
     "code": "",
     "end": "2026-11-15",
     "how": "매장·앱 주문",
