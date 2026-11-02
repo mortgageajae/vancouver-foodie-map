@@ -273,6 +273,23 @@
     "checkedAt": "2026-10-31T02:31:03Z"
   },
   {
+    "id": "papajohns-xl-1topping-1999-20261102",
+    "brand": "papajohns",
+    "title": "16인치 XL 1토핑 피자 $19.99",
+    "price": "19.99",
+    "orig": "",
+    "start": "2026-11-02",
+    "end": "2027-01-03",
+    "how": "앱 + 웹 주문",
+    "code": "",
+    "source": "공식 사이트",
+    "url": "https://ir.papajohns.com/news-events/news-releases/detail/681/better-just-got-bigger-papa-johns-canada-introduces-new-16-inch-xl-pizza",
+    "region": "전국",
+    "needsCheck": false,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-02T13:25:16Z"
+  },
+  {
     "id": "mcd-mccafe-1-coffee-20260113",
     "addedBy": "ai",
     "brand": "mcd",
