@@ -17,23 +17,6 @@
     "url": "https://deals.smartcanucks.ca/burger-king-bogo-whopper-jr-freaky-friday-weekly-app-deals-in-october/burger-king-bogo-whopper-jr-freaky-friday-weekly-app-deals-in-october"
   },
   {
-    "id": "korean-gisasikdang-special-20261007",
-    "brand": "korean",
-    "title": "기사식당 리오프닝: 제육백반·부산 돼지국밥 스페셜 (공기밥 + 반찬 8가지), 소주 1병도 $9.99",
-    "price": "9.99",
-    "orig": "",
-    "start": "2026-10-07",
-    "end": "2026-10-31",
-    "how": "매장 식사 · 포트코퀴틀람",
-    "code": "",
-    "source": "매장 공지",
-    "url": "https://www.instagram.com/gisasikdang.van/",
-    "region": "BC",
-    "needsCheck": false,
-    "addedBy": "admin",
-    "checkedAt": "2026-10-28T04:10:00Z"
-  },
-  {
     "id": "chipotle-boorito-7-20261031",
     "brand": "chipotle",
     "title": "부리토(Boorito) 할로윈: 코스튬 입고 가면 엔트리 $7",
@@ -49,6 +32,23 @@
     "needsCheck": false,
     "addedBy": "ai",
     "checkedAt": "2026-10-31T17:07:03Z"
+  },
+  {
+    "id": "korean-gisasikdang-special-20261007",
+    "brand": "korean",
+    "title": "기사식당 리오프닝: 제육백반·부산 돼지국밥 스페셜 (공기밥 + 반찬 8가지), 소주 1병도 $9.99",
+    "price": "9.99",
+    "orig": "",
+    "start": "2026-10-07",
+    "end": "2026-10-31",
+    "how": "매장 식사 · 포트코퀴틀람",
+    "code": "",
+    "source": "매장 공지",
+    "url": "https://www.instagram.com/gisasikdang.van/",
+    "region": "BC",
+    "needsCheck": false,
+    "addedBy": "admin",
+    "checkedAt": "2026-10-28T04:10:00Z"
   },
   {
     "id": "dominos-skip-30-off-20260921",
@@ -99,7 +99,7 @@
     "region": "전국",
     "needsCheck": false,
     "addedBy": "ai",
-    "checkedAt": "2026-10-31T12:51:10Z"
+    "checkedAt": "2026-11-04T12:51:27Z"
   },
   {
     "id": "subway-powerbowl-20off-20261101",
@@ -150,7 +150,7 @@
     "region": "전국",
     "needsCheck": false,
     "addedBy": "ai",
-    "checkedAt": "2026-10-31T12:51:10Z"
+    "checkedAt": "2026-11-04T12:51:27Z"
   },
   {
     "id": "pizzahut-second-pizza-1-20261026",
@@ -167,13 +167,30 @@
     "region": "전국",
     "needsCheck": false,
     "addedBy": "ai",
-    "checkedAt": "2026-11-01T12:52:27Z"
+    "checkedAt": "2026-11-04T12:51:27Z"
+  },
+  {
+    "price": "",
+    "orig": "",
+    "code": "",
+    "region": "전국",
+    "needsCheck": false,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-04T12:51:27Z",
+    "id": "mcd-skip-bogo-bigmac-20261102",
+    "brand": "mcd",
+    "title": "빅맥 세트 1+1 (스킵 주문)",
+    "start": "2026-11-02",
+    "end": "2026-11-15",
+    "how": "스킵 주문",
+    "source": "뉴스",
+    "url": "https://www.newswire.ca/news-releases/skip-is-giving-away-mcdonald-s-for-a-year-to-ten-lucky-canadians-852991590.html"
   },
   {
     "id": "wendys-canadian-meal-deal-899-20261027",
     "addedBy": "ai",
     "brand": "wendys",
-    "checkedAt": "2026-11-01T12:52:27Z",
+    "checkedAt": "2026-11-04T12:51:27Z",
     "code": "",
     "end": "2026-11-15",
     "how": "매장·앱 주문",
@@ -201,7 +218,24 @@
     "region": "전국",
     "needsCheck": false,
     "addedBy": "ai",
-    "checkedAt": "2026-10-31T12:51:10Z"
+    "checkedAt": "2026-11-04T12:51:27Z"
+  },
+  {
+    "price": "",
+    "orig": "",
+    "code": "",
+    "region": "전국",
+    "needsCheck": true,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-04T12:51:27Z",
+    "id": "kfc-bogo-box-meal-20261104",
+    "brand": "kfc",
+    "title": "박스 밀 1+1 (KFC 앱·웹 주문)",
+    "start": "2026-11-04",
+    "end": "2026-11-22",
+    "how": "앱 + 웹 주문 (픽업·배달)",
+    "source": "뉴스",
+    "url": "https://www.savealoonie.com/print-coupons/kfc-coupons/"
   },
   {
     "id": "jollibee-10pc-bucket-35-20261123",
@@ -221,6 +255,23 @@
     "checkedAt": "2026-10-31T12:51:10Z"
   },
   {
+    "price": "",
+    "orig": "",
+    "code": "",
+    "region": "전국",
+    "needsCheck": false,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-04T12:51:27Z",
+    "id": "mcd-skip-bogo-mcnuggets-20261116",
+    "brand": "mcd",
+    "title": "맥너겟 10조각 세트 1+1 (스킵 주문)",
+    "start": "2026-11-16",
+    "end": "2026-11-29",
+    "how": "스킵 주문",
+    "source": "뉴스",
+    "url": "https://www.newswire.ca/news-releases/skip-is-giving-away-mcdonald-s-for-a-year-to-ten-lucky-canadians-852991590.html"
+  },
+  {
     "id": "korean-gisasikdang-november-specials-20261101",
     "brand": "korean",
     "title": "기사식당 11월 스페셜: 감자탕·김치찌개·오징어볶음·소주(전 종류) 각 $14.99 (매일 종일)",
@@ -238,21 +289,38 @@
     "checkedAt": "2026-10-31T18:36:19Z"
   },
   {
-    "id": "ubereats-first-order-30-20261027",
-    "brand": "ubereats",
-    "title": "우버이츠 첫 주문 $30 할인 (신규 고객, $40 이상 주문)",
-    "price": "",
+    "price": "40",
     "orig": "",
-    "start": "2026-10-27",
-    "end": "2026-12-31",
-    "how": "코드 입력 (첫 주문만)",
-    "code": "FIRSTEATS30",
-    "source": "공식 사이트",
-    "url": "https://www.uber.com/ca/en/blog/can-promo-cards",
+    "code": "",
     "region": "전국",
     "needsCheck": false,
     "addedBy": "ai",
-    "checkedAt": "2026-10-28T04:17:40Z"
+    "checkedAt": "2026-11-04T12:51:27Z",
+    "id": "panago-retro-feast-40-20261103",
+    "brand": "panago",
+    "title": "레트로 피스트 $40 (XL 피자 + 딥 + 츄로 바이트 8개 + 윙 8개)",
+    "start": "2026-11-03",
+    "end": "2026-11-30",
+    "how": "매장·온라인 주문",
+    "source": "뉴스",
+    "url": "https://www.bnnbloomberg.ca/press-releases/2026/11/03/panago-celebrates-40th-birthday-with-throwback-deals-and-customer-appreciation-day/"
+  },
+  {
+    "price": "19.86",
+    "orig": "",
+    "code": "",
+    "region": "전국",
+    "needsCheck": false,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-04T12:51:27Z",
+    "id": "panago-totally-rad-large-1986-20261103",
+    "brand": "panago",
+    "title": "40주년 라지 피자 $19.86 (5가지 레시피)",
+    "start": "2026-11-03",
+    "end": "2026-11-30",
+    "how": "매장·온라인 주문",
+    "source": "뉴스",
+    "url": "https://www.bnnbloomberg.ca/press-releases/2026/11/03/panago-celebrates-40th-birthday-with-throwback-deals-and-customer-appreciation-day/"
   },
   {
     "id": "bk-whopper-wednesday-20261031",
@@ -273,6 +341,57 @@
     "checkedAt": "2026-10-31T02:31:03Z"
   },
   {
+    "id": "ubereats-first-order-30-20261027",
+    "brand": "ubereats",
+    "title": "우버이츠 첫 주문 $30 할인 (신규 고객, $40 이상 주문)",
+    "price": "",
+    "orig": "",
+    "start": "2026-10-27",
+    "end": "2026-12-31",
+    "how": "코드 입력 (첫 주문만)",
+    "code": "FIRSTEATS30",
+    "source": "공식 사이트",
+    "url": "https://www.uber.com/ca/en/blog/can-promo-cards",
+    "region": "전국",
+    "needsCheck": false,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-04T12:51:27Z"
+  },
+  {
+    "price": "9.49",
+    "orig": "",
+    "code": "",
+    "region": "전국",
+    "needsCheck": true,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-04T12:51:27Z",
+    "id": "aw-chubby-chicken-combo-949-20261104",
+    "brand": "aw",
+    "title": "처비 치킨 버거 콤보 $9.49 앱 쿠폰",
+    "start": "2026-11-04",
+    "end": "2027-01-03",
+    "how": "앱 쿠폰 (픽업)",
+    "source": "뉴스",
+    "url": "https://smartcanucks.ca/aw-canada-new-app-offers-3-99-mama-burger-more/"
+  },
+  {
+    "price": "3.99",
+    "orig": "",
+    "code": "",
+    "region": "전국",
+    "needsCheck": true,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-04T12:51:27Z",
+    "id": "aw-mama-burger-399-20261104",
+    "brand": "aw",
+    "title": "마마 버거 $3.99 앱 쿠폰",
+    "start": "2026-11-04",
+    "end": "2027-01-03",
+    "how": "앱 쿠폰 (픽업)",
+    "source": "뉴스",
+    "url": "https://smartcanucks.ca/aw-canada-new-app-offers-3-99-mama-burger-more/"
+  },
+  {
     "id": "papajohns-xl-1topping-1999-20261102",
     "brand": "papajohns",
     "title": "16인치 XL 1토핑 피자 $19.99",
@@ -287,13 +406,13 @@
     "region": "전국",
     "needsCheck": false,
     "addedBy": "ai",
-    "checkedAt": "2026-11-02T13:25:16Z"
+    "checkedAt": "2026-11-04T12:51:27Z"
   },
   {
     "id": "mcd-mccafe-1-coffee-20260113",
     "addedBy": "ai",
     "brand": "mcd",
-    "checkedAt": "2026-10-28T03:01:41Z",
+    "checkedAt": "2026-11-04T12:51:27Z",
     "code": "",
     "end": "2027-01-12",
     "how": "매장·앱 주문",
@@ -311,7 +430,7 @@
     "id": "mcd-mcvalue-5-20260113",
     "addedBy": "ai",
     "brand": "mcd",
-    "checkedAt": "2026-10-28T03:01:41Z",
+    "checkedAt": "2026-11-04T12:51:27Z",
     "code": "",
     "end": "2027-01-12",
     "how": "매장·앱 주문 (배달 제외, 세금 별도)",
