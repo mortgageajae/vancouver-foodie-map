@@ -85,6 +85,23 @@
     "url": "https://hotcanadadeals.ca/subway-restaurants-canada-deals-promotions-buy-one-footlong-get-one-free-get-20-off-any-power-bowl-5-snackwich-potato-rings/"
   },
   {
+    "id": "other-7eleven-free-slurpee-20261107",
+    "brand": "other",
+    "title": "세븐일레븐 스몰 슬러피 무료 (11/7 하루)",
+    "price": "0",
+    "orig": "",
+    "start": "2026-11-07",
+    "end": "2026-11-07",
+    "how": "매장 방문",
+    "code": "",
+    "source": "RFD",
+    "url": "https://forums.redflagdeals.com/viewtopic.php?t=2831169",
+    "region": "전국",
+    "needsCheck": true,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-07T12:50:43Z"
+  },
+  {
     "id": "jollibee-honey-garlic-10-off-20261030",
     "brand": "jollibee",
     "title": "허니 갈릭 치킨 포함 $30 이상 주문 시 $10 할인 (졸리비 리워즈)",
@@ -238,6 +255,23 @@
     "checkedAt": "2026-11-05T12:50:57Z"
   },
   {
+    "id": "mcd-free-fries-friday-20261106",
+    "brand": "mcd",
+    "title": "금요일 중간 감자튀김 무료 (앱)",
+    "price": "0",
+    "orig": "",
+    "start": "2026-11-06",
+    "end": "2026-11-20",
+    "how": "앱 쿠폰 ($3 이상 구매, 11/6·13·20, 오전 11시 전엔 해시브라운)",
+    "code": "",
+    "source": "공식 사이트",
+    "url": "https://www.mcdonalds.com/ca/en-ca/deals-and-promotions.html",
+    "region": "전국",
+    "needsCheck": false,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-07T12:50:43Z"
+  },
+  {
     "price": "",
     "orig": "",
     "code": "",
@@ -253,6 +287,23 @@
     "how": "앱 + 웹 주문 (픽업·배달)",
     "source": "뉴스",
     "url": "https://www.savealoonie.com/print-coupons/kfc-coupons/"
+  },
+  {
+    "id": "mcd-snack-mcflurry-2-monday-20261109",
+    "brand": "mcd",
+    "title": "스낵 맥플러리·선데 $2 (월요일, 앱)",
+    "price": "2",
+    "orig": "",
+    "start": "2026-11-09",
+    "end": "2026-11-23",
+    "how": "앱 쿠폰 (11/9·16·23, 프리미엄 맛 제외)",
+    "code": "",
+    "source": "공식 사이트",
+    "url": "https://www.mcdonalds.com/ca/en-ca/deals-and-promotions.html",
+    "region": "전국",
+    "needsCheck": false,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-07T12:50:43Z"
   },
   {
     "id": "jollibee-10pc-bucket-35-20261123",
