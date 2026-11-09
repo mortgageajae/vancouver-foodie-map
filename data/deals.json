@@ -318,9 +318,9 @@
     "source": "뉴스",
     "url": "https://www.todocanada.ca/jollibee-announces-new-chicken-sandwich-deals-and-holiday-celebrations-at-select-restaurants-across-canada/",
     "region": "전국",
-    "needsCheck": false,
+    "needsCheck": true,
     "addedBy": "ai",
-    "checkedAt": "2026-10-31T12:51:10Z"
+    "checkedAt": "2026-11-09T12:52:25Z"
   },
   {
     "price": "",
