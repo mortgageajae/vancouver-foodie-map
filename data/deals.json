@@ -204,6 +204,23 @@
     "checkedAt": "2026-11-05T12:50:57Z"
   },
   {
+    "id": "chipotle-tattoo-bogo-20261113",
+    "brand": "chipotle",
+    "title": "타투 보여주면 메인 메뉴 1+1 (오후 3~4시)",
+    "price": "",
+    "orig": "",
+    "start": "2026-11-13",
+    "end": "2026-11-13",
+    "how": "매장 주문 (타투·스티커 타투도 가능, 앱·배달 제외)",
+    "code": "",
+    "source": "뉴스",
+    "url": "https://www.qsrmagazine.com/news/chipotle-brings-back-tatted-like-a-chipotle-bag-bogo-promotion/",
+    "region": "전국",
+    "needsCheck": false,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-10T12:51:59Z"
+  },
+  {
     "price": "",
     "orig": "",
     "code": "",
@@ -236,6 +253,23 @@
     "start": "2026-10-27",
     "title": "캐나디안 밀 딜: 쿼터파운드 버거 + 감자튀김 + 프로스티 + 음료",
     "url": "https://www.wendys.com/en-ca"
+  },
+  {
+    "id": "subway-festive-meal-of-the-day-899-20261109",
+    "brand": "subway",
+    "title": "페스티브 오늘의 메뉴 $8.99 (6인치+음료+쿠키 2개)",
+    "price": "8.99",
+    "orig": "",
+    "start": "2026-11-09",
+    "end": "2026-11-16",
+    "how": "매장 주문 (풋롱 +$4)",
+    "code": "",
+    "source": "공식 사이트",
+    "url": "https://newsroom.subway.com/2026-11-09-Subway-Canada-Bakes-Up-a-Collaboration-with-Canadian-Designer-to-create-the-first-ever-Holiday-Bread-Coat,-Inspired-by-the-New-Holiday-Herb-Bread",
+    "region": "전국",
+    "needsCheck": true,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-10T12:51:59Z"
   },
   {
     "id": "chipotle-brisket-free-delivery-20261105",
