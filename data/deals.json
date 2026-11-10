@@ -255,6 +255,23 @@
     "url": "https://www.wendys.com/en-ca"
   },
   {
+    "id": "dominos-40-off-online-20261109",
+    "brand": "dominos",
+    "title": "도미노 온라인 주문 40% 할인",
+    "price": "40% 할인",
+    "orig": "",
+    "start": "2026-11-09",
+    "end": "2026-11-15",
+    "how": "웹사이트·앱 온라인 주문 시 코드 입력 (참여 매장, 지역별 상이)",
+    "code": "8441",
+    "source": "뉴스",
+    "url": "https://canadiancoupons.com/dominos-offers-40-off-online-pizza-orders-across-canada-through-nov-15/",
+    "region": "전국",
+    "needsCheck": true,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-10T17:06:58Z"
+  },
+  {
     "id": "subway-festive-meal-of-the-day-899-20261109",
     "brand": "subway",
     "title": "페스티브 오늘의 메뉴 $8.99 (6인치+음료+쿠키 2개)",
