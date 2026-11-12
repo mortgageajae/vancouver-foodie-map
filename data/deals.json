@@ -233,9 +233,9 @@
     "source": "뉴스",
     "url": "https://canadiancoupons.com/dominos-offers-40-off-online-pizza-orders-across-canada-through-nov-15/",
     "region": "전국",
-    "needsCheck": true,
+    "needsCheck": false,
     "addedBy": "ai",
-    "checkedAt": "2026-11-10T17:06:58Z"
+    "checkedAt": "2026-11-12T12:51:29Z"
   },
   {
     "price": "",
@@ -291,7 +291,7 @@
   {
     "id": "korean-jimoco-group-order-discount-20261110",
     "brand": "korean",
-    "title": "지모코 단체 주문 할인: 10~19인분 10%, 20인분 이상 20% (15인분부터 배달, 코퀴틀람 무료 배달)",
+    "title": "지모코 단체 주문 할인: 20인분 이상 15% (15인분부터 배달, 코퀴틀람 무료 배달)",
     "price": "",
     "orig": "",
     "start": "2026-11-10",
@@ -303,7 +303,7 @@
     "region": "BC",
     "needsCheck": true,
     "addedBy": "ai",
-    "checkedAt": "2026-11-11T12:52:33Z"
+    "checkedAt": "2026-11-12T12:51:29Z"
   },
   {
     "id": "chipotle-brisket-free-delivery-20261105",
@@ -340,6 +340,23 @@
     "checkedAt": "2026-11-11T12:52:33Z"
   },
   {
+    "id": "subway-2-footlong-1499-20261111",
+    "title": "풋롱 2개 $14.99 (콜드컷·베지·햄)",
+    "price": "14.99",
+    "how": "매장(계산대 스캔)·온라인 주문, 코드 입력",
+    "code": "FL1499",
+    "brand": "subway",
+    "orig": "",
+    "start": "2026-11-11",
+    "end": "2026-11-18",
+    "source": "공식 사이트",
+    "url": "https://www.subway.com/en-ca/offers",
+    "region": "전국",
+    "needsCheck": true,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-11T20:05:55Z"
+  },
+  {
     "id": "subway-3sub-free-footlong-20261111",
     "title": "풋롱 2개 사면 풋롱 1개 무료",
     "price": "",
@@ -362,23 +379,6 @@
     "price": "",
     "how": "매장(계산대 스캔)·온라인 주문, 코드 입력",
     "code": "FREE6INCH",
-    "brand": "subway",
-    "orig": "",
-    "start": "2026-11-11",
-    "end": "2026-11-18",
-    "source": "공식 사이트",
-    "url": "https://www.subway.com/en-ca/offers",
-    "region": "전국",
-    "needsCheck": true,
-    "addedBy": "ai",
-    "checkedAt": "2026-11-11T20:05:55Z"
-  },
-  {
-    "id": "subway-2-footlong-1499-20261111",
-    "title": "풋롱 2개 $14.99 (콜드컷·베지·햄)",
-    "price": "14.99",
-    "how": "매장(계산대 스캔)·온라인 주문, 코드 입력",
-    "code": "FL1499",
     "brand": "subway",
     "orig": "",
     "start": "2026-11-11",
