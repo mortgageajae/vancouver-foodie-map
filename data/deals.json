@@ -1,22 +1,5 @@
 [
   {
-    "id": "dominos-skip-30-off-20260921",
-    "brand": "dominos",
-    "title": "스킵에서 도미노 첫 3회 주문 30% 할인",
-    "price": "",
-    "orig": "",
-    "start": "2026-09-21",
-    "end": "2026-11-01",
-    "how": "스킵 주문 · 코드 입력",
-    "code": "DOMINOS30",
-    "source": "뉴스",
-    "url": "https://vitamagazine.com/2026/09/23/dominos-is-now-on-skip-and-theres-a-very-cheesy-deal-to-celebrate-win/",
-    "region": "전국",
-    "needsCheck": false,
-    "addedBy": "ai",
-    "checkedAt": "2026-11-01T12:52:27Z"
-  },
-  {
     "id": "subway-bogo-footlong-20261027",
     "addedBy": "ai",
     "brand": "subway",
@@ -474,6 +457,23 @@
     "how": "앱 + 웹 주문 (픽업·배달)",
     "source": "뉴스",
     "url": "https://www.savealoonie.com/print-coupons/kfc-coupons/"
+  },
+  {
+    "id": "skip-homegating-15-off-20261115",
+    "brand": "skip",
+    "title": "스킵 $20 이상 주문 시 최대 $15 할인 (코드 HOMEGATING)",
+    "price": "",
+    "orig": "",
+    "start": "2026-11-15",
+    "end": "2026-11-22",
+    "how": "코드 입력",
+    "code": "HOMEGATING",
+    "source": "뉴스",
+    "url": "https://canadiancoupons.com/top-5-deals-in-canada-this-week-november-15-2026/",
+    "region": "전국",
+    "needsCheck": true,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-16T12:53:02Z"
   },
   {
     "id": "mcd-snack-mcflurry-2-monday-20261109",
