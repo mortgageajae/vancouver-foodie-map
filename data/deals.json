@@ -255,6 +255,23 @@
     "checkedAt": "2026-11-12T12:51:29Z"
   },
   {
+    "id": "other-starbucks-red-cup-day-20261117",
+    "brand": "other",
+    "title": "스타벅스 레드컵 데이: 홀리데이 음료 구매 시 리유저블 컵 무료 (11/17 하루, 소진 시 종료)",
+    "price": "",
+    "orig": "",
+    "start": "2026-11-17",
+    "end": "2026-11-17",
+    "how": "매장 주문 · 앱 · 배달앱",
+    "code": "",
+    "source": "뉴스",
+    "url": "https://dailyhive.com/vancouver/starbucks-red-cup-day-2026",
+    "region": "전국",
+    "needsCheck": true,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-17T12:51:40Z"
+  },
+  {
     "id": "popeyes-honey-chicken-biscuit-20261102",
     "brand": "popeyes",
     "title": "허니 치킨 비스킷 $6.99 (기간 한정)",
@@ -491,6 +508,23 @@
     "needsCheck": false,
     "addedBy": "ai",
     "checkedAt": "2026-11-07T12:50:43Z"
+  },
+  {
+    "id": "dq-holiday-cake-7-off-20261116",
+    "brand": "dq",
+    "title": "DQ·블리자드 케이크 $7 할인 (DQ 앱)",
+    "price": "",
+    "orig": "",
+    "start": "2026-11-16",
+    "end": "2026-11-23",
+    "how": "앱 쿠폰",
+    "code": "",
+    "source": "뉴스",
+    "url": "https://smartcanucks.ca/dairy-queen-canada-holiday-deals-save-7-off-a-dq-holiday-cake/",
+    "region": "전국",
+    "needsCheck": true,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-17T12:51:40Z"
   },
   {
     "id": "jollibee-10pc-bucket-35-20261123",
