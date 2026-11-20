@@ -136,21 +136,21 @@
     "checkedAt": "2026-11-10T12:51:59Z"
   },
   {
-    "id": "dominos-40-off-online-20261109",
-    "brand": "dominos",
-    "title": "도미노 온라인 주문 40% 할인",
-    "price": "40% 할인",
-    "orig": "",
-    "start": "2026-11-09",
-    "end": "2026-11-15",
-    "how": "웹사이트·앱 온라인 주문 시 코드 입력 (참여 매장, 지역별 상이)",
-    "code": "8441",
-    "source": "뉴스",
-    "url": "https://canadiancoupons.com/dominos-offers-40-off-online-pizza-orders-across-canada-through-nov-15/",
-    "region": "전국",
-    "needsCheck": false,
+    "id": "wendys-canadian-meal-deal-899-20261027",
     "addedBy": "ai",
-    "checkedAt": "2026-11-12T12:51:29Z"
+    "brand": "wendys",
+    "checkedAt": "2026-11-05T12:50:57Z",
+    "code": "",
+    "end": "2026-11-15",
+    "how": "매장·앱 주문",
+    "needsCheck": false,
+    "orig": "",
+    "price": "8.99",
+    "region": "전국",
+    "source": "공식 사이트",
+    "start": "2026-10-27",
+    "title": "캐나디안 밀 딜: 쿼터파운드 버거 + 감자튀김 + 프로스티 + 음료",
+    "url": "https://www.wendys.com/en-ca"
   },
   {
     "price": "",
@@ -170,6 +170,23 @@
     "url": "https://www.newswire.ca/news-releases/skip-is-giving-away-mcdonald-s-for-a-year-to-ten-lucky-canadians-852991590.html"
   },
   {
+    "id": "dominos-40-off-online-20261109",
+    "brand": "dominos",
+    "title": "도미노 온라인 주문 40% 할인",
+    "price": "40% 할인",
+    "orig": "",
+    "start": "2026-11-09",
+    "end": "2026-11-15",
+    "how": "웹사이트·앱 온라인 주문 시 코드 입력 (참여 매장, 지역별 상이)",
+    "code": "8441",
+    "source": "뉴스",
+    "url": "https://canadiancoupons.com/dominos-offers-40-off-online-pizza-orders-across-canada-through-nov-15/",
+    "region": "전국",
+    "needsCheck": false,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-12T12:51:29Z"
+  },
+  {
     "id": "wendys-99c-small-frosty-day-20261115",
     "brand": "wendys",
     "title": "프로스티 데이: 스몰 프로스티 99¢ (11/15 하루)",
@@ -185,23 +202,6 @@
     "needsCheck": true,
     "addedBy": "ai",
     "checkedAt": "2026-11-15T12:50:05Z"
-  },
-  {
-    "id": "wendys-canadian-meal-deal-899-20261027",
-    "addedBy": "ai",
-    "brand": "wendys",
-    "checkedAt": "2026-11-05T12:50:57Z",
-    "code": "",
-    "end": "2026-11-15",
-    "how": "매장·앱 주문",
-    "needsCheck": false,
-    "orig": "",
-    "price": "8.99",
-    "region": "전국",
-    "source": "공식 사이트",
-    "start": "2026-10-27",
-    "title": "캐나디안 밀 딜: 쿼터파운드 버거 + 감자튀김 + 프로스티 + 음료",
-    "url": "https://www.wendys.com/en-ca"
   },
   {
     "id": "subway-festive-meal-of-the-day-899-20261109",
@@ -442,6 +442,23 @@
     "url": "https://www.savealoonie.com/print-coupons/kfc-coupons/"
   },
   {
+    "id": "skip-homegating-15-off-20261115",
+    "brand": "skip",
+    "title": "스킵 $20 이상 주문 시 최대 $15 할인 (코드 HOMEGATING)",
+    "price": "",
+    "orig": "",
+    "start": "2026-11-15",
+    "end": "2026-11-22",
+    "how": "코드 입력",
+    "code": "HOMEGATING",
+    "source": "뉴스",
+    "url": "https://canadiancoupons.com/top-5-deals-in-canada-this-week-november-15-2026/",
+    "region": "전국",
+    "needsCheck": true,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-16T12:53:02Z"
+  },
+  {
     "id": "littlecaesars-35offer-5-off-20261119",
     "brand": "littlecaesars",
     "title": "$35 이상 주문 시 $5 할인 (코드 35OFFER)",
@@ -476,40 +493,6 @@
     "checkedAt": "2026-11-19T12:51:47Z"
   },
   {
-    "id": "skip-homegating-15-off-20261115",
-    "brand": "skip",
-    "title": "스킵 $20 이상 주문 시 최대 $15 할인 (코드 HOMEGATING)",
-    "price": "",
-    "orig": "",
-    "start": "2026-11-15",
-    "end": "2026-11-22",
-    "how": "코드 입력",
-    "code": "HOMEGATING",
-    "source": "뉴스",
-    "url": "https://canadiancoupons.com/top-5-deals-in-canada-this-week-november-15-2026/",
-    "region": "전국",
-    "needsCheck": true,
-    "addedBy": "ai",
-    "checkedAt": "2026-11-16T12:53:02Z"
-  },
-  {
-    "id": "dq-holiday-cake-7-off-20261116",
-    "brand": "dq",
-    "title": "DQ·블리자드 케이크 $7 할인 (DQ 앱)",
-    "price": "",
-    "orig": "",
-    "start": "2026-11-16",
-    "end": "2026-11-23",
-    "how": "앱 쿠폰",
-    "code": "",
-    "source": "뉴스",
-    "url": "https://smartcanucks.ca/dairy-queen-canada-holiday-deals-save-7-off-a-dq-holiday-cake/",
-    "region": "전국",
-    "needsCheck": true,
-    "addedBy": "ai",
-    "checkedAt": "2026-11-17T12:51:40Z"
-  },
-  {
     "id": "mcd-snack-mcflurry-2-monday-20261109",
     "brand": "mcd",
     "title": "스낵 맥플러리·선데 $2 (월요일, 앱)",
@@ -525,6 +508,23 @@
     "needsCheck": false,
     "addedBy": "ai",
     "checkedAt": "2026-11-07T12:50:43Z"
+  },
+  {
+    "id": "mcd-mcdelivery-free-bigmac-mcchicken-20261120",
+    "brand": "mcd",
+    "title": "맥딜리버리 $25 이상 주문 시 빅맥 또는 맥치킨 무료 (맥도날드 앱)",
+    "price": "0",
+    "orig": "",
+    "start": "2026-11-20",
+    "end": "2026-11-23",
+    "how": "맥도날드 앱 배달 주문",
+    "code": "",
+    "source": "뉴스",
+    "url": "https://www.savealoonie.com/print-coupons/mcdonalds-printable-coupons/",
+    "region": "전국",
+    "needsCheck": true,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-20T12:52:19Z"
   },
   {
     "id": "popeyes-honey-chicken-biscuit-20261102",
@@ -612,23 +612,6 @@
     "checkedAt": "2026-10-31T18:36:19Z"
   },
   {
-    "id": "mcd-mcdelivery-free-sausage-egg-mcmuffin-20261115",
-    "brand": "mcd",
-    "title": "맥딜리버리 $15 이상 주문 시 소시지 에그 맥머핀 무료 (맥도날드 앱)",
-    "price": "0",
-    "orig": "",
-    "start": "2026-11-15",
-    "end": "2026-11-30",
-    "how": "맥도날드 앱 배달 주문 (우버이츠·스킵 제외)",
-    "code": "",
-    "source": "뉴스",
-    "url": "https://www.savealoonie.com/print-coupons/mcdonalds-printable-coupons/",
-    "region": "전국",
-    "needsCheck": true,
-    "addedBy": "ai",
-    "checkedAt": "2026-11-15T12:50:05Z"
-  },
-  {
     "price": "40",
     "orig": "",
     "code": "",
@@ -663,6 +646,23 @@
     "url": "https://www.bnnbloomberg.ca/press-releases/2026/11/03/panago-celebrates-40th-birthday-with-throwback-deals-and-customer-appreciation-day/"
   },
   {
+    "id": "mcd-mcdelivery-free-sausage-egg-mcmuffin-20261115",
+    "brand": "mcd",
+    "title": "맥딜리버리 $15 이상 주문 시 소시지 에그 맥머핀 무료 (맥도날드 앱)",
+    "price": "0",
+    "orig": "",
+    "start": "2026-11-15",
+    "end": "2026-11-30",
+    "how": "맥도날드 앱 배달 주문 (우버이츠·스킵 제외)",
+    "code": "",
+    "source": "뉴스",
+    "url": "https://www.savealoonie.com/print-coupons/mcdonalds-printable-coupons/",
+    "region": "전국",
+    "needsCheck": true,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-15T12:50:05Z"
+  },
+  {
     "orig": "",
     "code": "",
     "region": "전국",
@@ -678,6 +678,23 @@
     "end": "2026-12-13",
     "how": "스킵 주문",
     "url": "https://www.newswire.ca/news-releases/skip-is-giving-away-mcdonald-s-for-a-year-to-ten-lucky-canadians-852991590.html"
+  },
+  {
+    "id": "ubereats-first-order-30-20261027",
+    "brand": "ubereats",
+    "title": "우버이츠 첫 주문 $30 할인 (신규 고객, $40 이상 주문)",
+    "price": "",
+    "orig": "",
+    "start": "2026-10-27",
+    "end": "2026-12-31",
+    "how": "코드 입력 (첫 주문만)",
+    "code": "FIRSTEATS30",
+    "source": "공식 사이트",
+    "url": "https://www.uber.com/ca/en/blog/can-promo-cards",
+    "region": "전국",
+    "needsCheck": false,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-04T12:51:27Z"
   },
   {
     "id": "bk-whopper-wednesday-20261031",
@@ -698,21 +715,21 @@
     "checkedAt": "2026-10-31T02:31:03Z"
   },
   {
-    "id": "ubereats-first-order-30-20261027",
-    "brand": "ubereats",
-    "title": "우버이츠 첫 주문 $30 할인 (신규 고객, $40 이상 주문)",
-    "price": "",
+    "id": "papajohns-xl-1topping-1999-20261102",
+    "brand": "papajohns",
+    "title": "16인치 XL 1토핑 피자 $19.99",
+    "price": "19.99",
     "orig": "",
-    "start": "2026-10-27",
-    "end": "2026-12-31",
-    "how": "코드 입력 (첫 주문만)",
-    "code": "FIRSTEATS30",
+    "start": "2026-11-02",
+    "end": "2027-01-03",
+    "how": "앱 + 웹 주문",
+    "code": "",
     "source": "공식 사이트",
-    "url": "https://www.uber.com/ca/en/blog/can-promo-cards",
+    "url": "https://ir.papajohns.com/news-events/news-releases/detail/681/better-just-got-bigger-papa-johns-canada-introduces-new-16-inch-xl-pizza",
     "region": "전국",
     "needsCheck": false,
     "addedBy": "ai",
-    "checkedAt": "2026-11-04T12:51:27Z"
+    "checkedAt": "2026-11-05T12:50:57Z"
   },
   {
     "orig": "",
@@ -783,21 +800,21 @@
     "url": "https://smartcanucks.ca/aw-canada-new-app-offers-3-99-mama-burger-more/"
   },
   {
-    "id": "papajohns-xl-1topping-1999-20261102",
-    "brand": "papajohns",
-    "title": "16인치 XL 1토핑 피자 $19.99",
-    "price": "19.99",
+    "id": "dq-holiday-cake-7-off-20261116",
+    "brand": "dq",
+    "title": "DQ·블리자드 케이크 $7 할인 (DQ 앱)",
+    "price": "",
     "orig": "",
-    "start": "2026-11-02",
+    "start": "2026-11-16",
     "end": "2027-01-03",
-    "how": "앱 + 웹 주문",
+    "how": "앱 쿠폰",
     "code": "",
     "source": "공식 사이트",
-    "url": "https://ir.papajohns.com/news-events/news-releases/detail/681/better-just-got-bigger-papa-johns-canada-introduces-new-16-inch-xl-pizza",
+    "url": "https://www.dairyqueen.com/en-ca/",
     "region": "전국",
-    "needsCheck": false,
+    "needsCheck": true,
     "addedBy": "ai",
-    "checkedAt": "2026-11-05T12:50:57Z"
+    "checkedAt": "2026-11-20T12:52:19Z"
   },
   {
     "id": "mcd-mccafe-1-coffee-20260113",
@@ -836,24 +853,6 @@
     "always": true
   },
   {
-    "id": "korean-haan-lunch-special-b-20261027",
-    "brand": "korean",
-    "title": "한 코리안 BBQ 1인 점심 스페셜 B: 순두부·된장찌개·비빔밥·감자탕 중 택1 + 공기밥 + 밑반찬 4종 (GST 포함)",
-    "price": "12",
-    "orig": "",
-    "start": "2026-10-27",
-    "end": "2027-01-31",
-    "how": "매장 점심 · 코퀴틀람 선우드 스퀘어",
-    "code": "",
-    "source": "매장 공지",
-    "url": "https://www.haanbbq.com/",
-    "region": "BC",
-    "needsCheck": true,
-    "always": true,
-    "addedBy": "admin",
-    "checkedAt": "2026-10-28T04:19:38Z"
-  },
-  {
     "id": "korean-jimoco-lunch-for-two-20261026",
     "brand": "korean",
     "title": "지모코 카페 앤 파스타 2인 점심: 파스타 2개 + 미니 카프레제·샐러드·미트볼 (월~목 11~15시, 매장 식사)",
@@ -870,5 +869,23 @@
     "always": true,
     "addedBy": "admin",
     "checkedAt": "2026-10-31T18:02:42Z"
+  },
+  {
+    "id": "korean-haan-lunch-special-b-20261027",
+    "brand": "korean",
+    "title": "한 코리안 BBQ 1인 점심 스페셜 B: 순두부·된장찌개·비빔밥·감자탕 중 택1 + 공기밥 + 밑반찬 4종 (GST 포함)",
+    "price": "12",
+    "orig": "",
+    "start": "2026-10-27",
+    "end": "2027-01-31",
+    "how": "매장 점심 · 코퀴틀람 선우드 스퀘어",
+    "code": "",
+    "source": "매장 공지",
+    "url": "https://www.haanbbq.com/",
+    "region": "BC",
+    "needsCheck": true,
+    "always": true,
+    "addedBy": "admin",
+    "checkedAt": "2026-10-28T04:19:38Z"
   }
 ]
