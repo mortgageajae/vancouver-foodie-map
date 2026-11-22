@@ -1,22 +1,5 @@
 [
   {
-    "id": "other-7eleven-free-slurpee-20261107",
-    "brand": "other",
-    "title": "세븐일레븐 스몰 슬러피 무료 (11/7 하루)",
-    "price": "0",
-    "orig": "",
-    "start": "2026-11-07",
-    "end": "2026-11-07",
-    "how": "매장 방문",
-    "code": "",
-    "source": "RFD",
-    "url": "https://forums.redflagdeals.com/viewtopic.php?t=2831169",
-    "region": "전국",
-    "needsCheck": true,
-    "addedBy": "ai",
-    "checkedAt": "2026-11-07T12:50:43Z"
-  },
-  {
     "id": "jollibee-honey-garlic-10-off-20261030",
     "brand": "jollibee",
     "title": "허니 갈릭 치킨 포함 $30 이상 주문 시 $10 할인 (졸리비 리워즈)",
@@ -631,7 +614,7 @@
   {
     "id": "chipotle-cyber26-free-delivery-20261127",
     "brand": "chipotle",
-    "title": "사이버 위크엔드 배달비 $0 (코드 CYBER26)",
+    "title": "사이버 위크엔드 배달비 $0 ($12 이상 주문, 코드 CYBER26)",
     "price": "",
     "orig": "",
     "start": "2026-11-27",
@@ -643,7 +626,7 @@
     "region": "전국",
     "needsCheck": false,
     "addedBy": "ai",
-    "checkedAt": "2026-11-21T12:50:59Z"
+    "checkedAt": "2026-11-22T12:50:37Z"
   },
   {
     "id": "korean-gisasikdang-november-specials-20261101",
@@ -844,11 +827,11 @@
     "how": "앱 쿠폰",
     "code": "",
     "source": "공식 사이트",
-    "url": "https://www.dairyqueen.com/en-ca/",
+    "url": "https://smartcanucks.ca/dairy-queen-canada-holiday-deals-save-7-off-a-dq-holiday-cake/",
     "region": "전국",
     "needsCheck": true,
     "addedBy": "ai",
-    "checkedAt": "2026-11-20T12:52:19Z"
+    "checkedAt": "2026-11-22T12:50:37Z"
   },
   {
     "id": "papajohns-xl-1topping-1999-20261102",
