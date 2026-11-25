@@ -1,22 +1,5 @@
 [
   {
-    "id": "pizzahut-second-pizza-1-20261026",
-    "brand": "pizzahut",
-    "title": "피자 1판 사면 두 번째 피자 $1",
-    "price": "1",
-    "orig": "",
-    "start": "2026-10-26",
-    "end": "2026-11-10",
-    "how": "온라인/앱 주문 (스터프드 크러스트·토핑 추가 별도)",
-    "code": "",
-    "source": "공식 사이트",
-    "url": "https://x.com/PizzaHutCanada/status/2114839658446393404",
-    "region": "전국",
-    "needsCheck": false,
-    "addedBy": "ai",
-    "checkedAt": "2026-11-05T12:50:57Z"
-  },
-  {
     "id": "tims-veterans-free-hot-beverage-20261111",
     "brand": "tims",
     "title": "현충일 참전용사·캐나다군 핫음료 무료 (모든 사이즈)",
@@ -713,6 +696,23 @@
     "needsCheck": false,
     "addedBy": "ai",
     "checkedAt": "2026-11-04T12:51:27Z"
+  },
+  {
+    "id": "fatburger-giftcard-5-fatcash-20261123",
+    "brand": "fatburger",
+    "title": "기프트카드 $25 구매 시 $5 팻캐시 증정",
+    "price": "",
+    "orig": "",
+    "start": "2026-11-23",
+    "end": "2027-01-01",
+    "how": "매장에서 기프트카드 구매 (팻캐시는 2027년 1월 2~31일 사용)",
+    "code": "",
+    "source": "공식 사이트",
+    "url": "https://www.fatburgercanada.com/fat-giftcards/",
+    "region": "전국",
+    "needsCheck": false,
+    "addedBy": "ai",
+    "checkedAt": "2026-11-25T12:51:34Z"
   },
   {
     "orig": "",
